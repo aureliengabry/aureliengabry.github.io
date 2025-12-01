@@ -13,6 +13,8 @@ function Presentation() {
       <Logo className="mt-10 w-[75%]" />
       <div
         className="mt-48 z-1 flex items-center justify-center rounded-full hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer animate-bounce"
+        role="button"
+        aria-label="Scroll to technologies"
         onClick={() => {
           customScrollTo("technologies");
         }}

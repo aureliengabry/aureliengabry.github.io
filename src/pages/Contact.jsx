@@ -14,12 +14,16 @@ function Contact() {
         <div className="flex justify-center items-center gap-6 mt-4">
           <Github
             className="w-12 h-12 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
+            role="button"
+            aria-label="Github profile"
             onClick={() =>
               window.open("https://github.com/aureliengabry", "_blank")
             }
           />
           <Linkedin
             className="w-16 h-16 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
+            role="button"
+            aria-label="LinkedIn profile"
             onClick={() =>
               window.open("https://linkedin.com/in/aureliengabry", "_blank")
             }

@@ -31,6 +31,7 @@ function  Technologies() {
       <div className="mt-2 px-8 flex flex-wrap items-center justify-center gap-8">
         {[front_skills, back_skills, embedded_skills].map((skill) => (
           <Skills
+            key={skill.title}
             icon={skill.icon}
             title={skill.title}
             stack={skill.stack}

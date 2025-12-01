@@ -7,8 +7,7 @@ import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
-    <>
-    <div className="font-roboto bg-portfolio-bg dark:bg-portfolio-bg-dark text-portfolio-text dark:text-portfolio-text-dark transition-colors duration-500 ease-in-out">  
+    <div className="font-roboto bg-portfolio-bg dark:bg-portfolio-bg-dark text-portfolio-text dark:text-portfolio-text-dark transition-colors duration-500 ease-in-out">
       <Menu />
       <Presentation />
       <Technologies />
@@ -16,8 +15,7 @@ function App() {
       <Contact />
       <Footer />
     </div>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
