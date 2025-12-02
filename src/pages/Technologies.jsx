@@ -4,26 +4,41 @@ import Embedded from "../assets/svg/embedded.svg?react";
 import Skills from "../components/Skills";
 import Title from "../components/Title";
 
-
-function  Technologies() {
+function Technologies() {
   const front_skills = {
     icon: <Frontend className="h-30 w-30 mx-auto  mb-4" />,
     title: "Front-end",
     stack: ["React", "TailwindCSS", "HTML5", "CSS3", "JavaScript", "Streamlit"],
     description:
-      "I excel in front-end development, crafting responsive and user-friendly interfaces using React and TailwindCSS. My expertise includes building dynamic web applications with a focus on performance and accessibility. I am proficient in HTML5, CSS3, and JavaScript, enabling me to create visually appealing designs that enhance user experience. Additionally, I have experience with Streamlit for developing interactive data applications quickly and efficiently.",
+      "Create responsive and user-friendly interfaces with React and TailwindCSS.\
+       I am proficient in HTML5, CSS3, and JavaScript, which allows me to design visually engaging layouts that enhance user experience.\
+       In addition, I have hands-on experience using Streamlit to develop quickly interactive web applications (notably for POC).",
   };
   const back_skills = {
     icon: <Backend className="h-30 w-30 mx-auto  mb-4" />,
     title: "Back-end",
-    stack: ["Python", "SQLite", "Flask", "FastAPI"],
+    stack: [
+      "Python",
+      "SQLite",
+      "Flask",
+      "FastAPI",
+      "Docker" ,
+      "Docker Compose",
+      "Nginx",
+    ],
     description:
-      "I specialize in backend development for embedded equipment, focusing on lightweight, reliable, and maintainable architectures. I design and deploy microservice-based systems using Docker Compose, ensuring consistent multi-service environments and smooth integration workflows. My primary backend language is Python, which I use to build clean, efficient APIs and services. I also work with databases such as SQLite, choosing compact and resource-friendly solutions well-suited for embedded systems.",
+      "I use microservice-based systems using Docker Compose, ensuring consistent multi-service environments and smooth integration workflows on devices. \
+       My primary backend language is Python, which I use to build efficient APIs which will constitute the services, and integrate multiple protocols to communicate between equipment (MQTT, FTP, SNMP).\
+       I also work with databases such as SQLite (notably using SQLAlchemy), choosing compact and resource-friendly solutions well-suited for embedded systems.",
   };
   const embedded_skills = {
     icon: <Embedded className="h-30 w-30 mx-auto  mb-4" />,
     title: "Tools",
-    stack: ["Python", "SQLite", "Flask", "FastAPI"],
+    stack: ["Jenkins", "SonarQube", "Nexus", "Git"],
+    description:
+    "I utilize automated CI/CD pipelines using Jenkins to streamline build, test, and deployment processes.\
+    Integration tests are executed as part of these pipelines to ensure system stability and reliability before release.\
+    Code quality and coverage are continuously monitored through SonarQube, helping maintain high development standards."
   };
   return (
     <div id="technologies">

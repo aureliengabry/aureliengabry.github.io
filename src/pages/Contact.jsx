@@ -8,8 +8,8 @@ function Contact() {
       <Title title="Contact" />
       <div className="mt-20 flex flex-col items-center justify-center gap-4">
         <p className="text-lg">
-          I'd love to hear from you! Whether you have a question, a project
-          idea, or just want to connect, feel free to reach out.
+          I'd love to hear from you! Feel free to reach me via GitHub, LinkedIn, or
+          email :
         </p>
         <div className="flex justify-center items-center gap-6 mt-4">
           <Github

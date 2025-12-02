@@ -3,18 +3,32 @@ import Title from "../components/Title";
 function Experiences() {
   const experience = [
     {
-      date: "2022 - Present",
+      date: "September 2021 - Present",
       role: "Software Engineer",
-      company: "Tech Solutions Inc.",
+      company: "Arrive, Besançon, France",
       description:
-        " Developing scalable web applications and services using modern frameworks and technologies. Collaborating with cross-functional teams to deliver high-quality software solutions.",
+        "Ticketing project for public transportation systems.\
+        Developed backend services in Python to manage ticket validation and user data.\
+        Implemented Docker-based microservices for scalable deployment on embedded hardware (being conform to ITxPT normes). \
+        Using protocols such as MQTT, SNMP and FTP for communication between devices and central servers.\
+        And develop the user interface using React for configuration and monitoring purposes.",
     },
     {
-      date: "2020 - 2022",
-      role: "Junior Developer",
-      company: "Web Innovations LLC",
+      date: "September 2021",
+      role: "Graduate from Master in Embedded Systems and IoT",
+      company: "Université de Science et Technologie, Besançon, France",
       description:
-        " Assisted in the development and maintenance of client websites and applications. Gained experience in front-end and back-end technologies, contributing to various projects and improving coding skills.",
+        "Completed a Master's degree specializing in Embedded Systems.\
+        Gained in-depth knowledge of embedded system design, real-time operating systems, and low-level protocols.\
+        Developed skills in programming languages such as C, and Python, along with hands-on experience in hardware interfacing and network communication.",
+    },
+    {
+      date: "February 2021 - August 2021",
+      role: "Intern Developer",
+      company: "Expleo, Lyon, France",
+      description:
+        "Designed and implemented an indoor/outdoor geolocation system leveraging Raspberry Pi devices.\
+        Developed Python-based firmware with MQTT communication for data transmission, and created a real-time monitoring interface using ThingsBoard.",
     },
   ];
   return (
@@ -46,6 +60,9 @@ function Experiences() {
             {/* Card */}
             <div className="bg-portfolio-white  shadow-xl/30 dark:shadow-portfolio-text-dark rounded-lg dark:bg-portfolio-bg-dark dark:border-portfolio-text-dark p-4">
               <h3 className="text-xl font-bold text-portfolio-theme">{event.date}</h3>
+              <h4 className="text-lg font-semibold text-portfolio-text dark:text-portfolio-text-dark">
+                {event.role} - {event.company}
+              </h4>
               <p className="text-portfolio-text dark:text-portfolio-text-dark">
                 {event.description}
               </p>
