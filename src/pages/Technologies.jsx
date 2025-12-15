@@ -8,7 +8,7 @@ function Technologies() {
   const front_skills = {
     icon: <Frontend className="h-30 w-30 mx-auto  mb-4" />,
     title: "Front-end",
-    stack: ["React", "TailwindCSS", "HTML5", "CSS3", "JavaScript", "Streamlit"],
+    stack:  ["TailwindCSS", "HTML5", "CSS3", "Streamlit"],
     description:
       "Create responsive and user-friendly interfaces with React and TailwindCSS.\
        I am proficient in HTML5, CSS3, and JavaScript, which allows me to design visually engaging layouts that enhance user experience.\
