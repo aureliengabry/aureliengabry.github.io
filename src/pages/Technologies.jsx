@@ -8,7 +8,7 @@ function Technologies() {
   const front_skills = {
     icon: <Frontend className="h-30 w-30 mx-auto  mb-4" />,
     title: "Front-end",
-    stack: ["React", "TailwindCSS", "HTML5", "CSS3", "JavaScript", "Streamlit"],
+    stack:  ["HTML5", "CSS3", "JavaScript","React", "Vue", "Redux","TailwindCSS", "Streamlit", "Figma"],
     description:
       "Create responsive and user-friendly interfaces with React and TailwindCSS.\
        I am proficient in HTML5, CSS3, and JavaScript, which allows me to design visually engaging layouts that enhance user experience.\
@@ -20,11 +20,17 @@ function Technologies() {
     stack: [
       "Python",
       "SQLite",
+      "SQLAlchemy",
       "Flask",
       "FastAPI",
+      "Asyncio",
       "Docker" ,
       "Docker Compose",
       "Nginx",
+      "MQTT",
+      "FTP",
+      "Avahi",
+      "Zeroconf",
     ],
     description:
       "I use microservice-based systems using Docker Compose, ensuring consistent multi-service environments and smooth integration workflows on devices. \
@@ -34,7 +40,7 @@ function Technologies() {
   const embedded_skills = {
     icon: <Embedded className="h-30 w-30 mx-auto  mb-4" />,
     title: "Tools",
-    stack: ["Jenkins", "SonarQube", "Nexus", "Git"],
+    stack: ["Jenkins", "SonarQube", "Nexus", "Git", "Github"],
     description:
     "I utilize automated CI/CD pipelines using Jenkins to streamline build, test, and deployment processes.\
     Integration tests are executed as part of these pipelines to ensure system stability and reliability before release.\

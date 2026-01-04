@@ -7,7 +7,7 @@ function Contact() {
     <div className="max-h-[50vh]" id="contact">
       <Title title="Contact" />
       <div className="mt-20 flex flex-col items-center justify-center gap-4">
-        <p className="text-lg">
+        <p className="text-lg px-4">
           I'd love to hear from you! Feel free to reach me via GitHub, LinkedIn, or
           email :
         </p>
@@ -21,7 +21,7 @@ function Contact() {
             }
           />
           <Linkedin
-            className="w-16 h-16 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
+            className="w-12 h-12 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
             role="button"
             aria-label="LinkedIn profile"
             onClick={() =>
