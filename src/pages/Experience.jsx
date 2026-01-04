@@ -39,7 +39,7 @@ function Experiences() {
       <Title title="Experiences" />
       <div className="relative w-11/12 md:w-3/4 mx-auto py-10">
         {/* Vertical line */}
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2 rounded-lg bg-gray-300 h-full"></div>
+        <div className="absolute left-1/2 top-5 -translate-x-1/2 w-2 rounded-lg bg-gray-300 h-[95%] md:block hidden"></div>
 
         {experience.map((event, i) => (
           <div
@@ -52,7 +52,7 @@ function Experiences() {
           >
             {/* Dot on vertical line */}
             <div
-              className={`absolute top-8 w-5 h-5 bg-portfolio-theme border-4 border-white rounded-full shadow-md 
+              className={`absolute top-8 w-5 h-5 bg-portfolio-theme border-4 border-white rounded-full shadow-md md:block hidden
             ${i % 2 === 0 ? "md:right-[-10px]" : "md:left-[-10px]"}
           `}
             ></div>

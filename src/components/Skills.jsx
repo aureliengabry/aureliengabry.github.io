@@ -1,6 +1,6 @@
 function Skills({ icon, title, stack, description }) {
   return (
-    <div className="h-[40rem] xl:w-[30%] md:w-[45%] sm:w-[90%] bg-portfolio-white dark:bg-portfolio-bg-dark shadow-xl/30 dark:shadow-portfolio-text-dark rounded-lg p-8">
+    <div className="xl:min-h-[40rem] md:min-h-[45rem] sm:min-h-[30rem] xl:w-[30%] md:w-[45%] sm:w-[90%] bg-portfolio-white dark:bg-portfolio-bg-dark shadow-xl/30 dark:shadow-portfolio-text-dark rounded-lg p-8">
       {icon}
       <h1 className="text-2xl capitalize text-center font-bold mb-4">
         {title}

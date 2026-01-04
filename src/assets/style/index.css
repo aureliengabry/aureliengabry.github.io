@@ -12,6 +12,19 @@
     --color-portfolio-theme-dark: oklch(0.4782 0.1523 276.54);
 
     --font-roboto: 'Roboto', sans-serif ;
+
+    --animate-slide-in-x: slideInX 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    
+    @keyframes slideInX{
+        0% {
+        transform: 'translateX(80px)';
+        opacity: '0';
+        }
+        100% {
+        transform: 'translateX(0)';
+        opacity: '1';
+        }
+    }
  }
 
  @custom-variant dark (&:where(.dark, .dark *)) 
