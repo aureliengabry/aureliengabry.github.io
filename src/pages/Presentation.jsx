@@ -29,7 +29,7 @@ function Presentation() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh)] bg-none font-bold shadow-lg/20">
+    <div className="relative flex flex-col items-center justify-center min-h-[calc(100vh)] font-bold shadow-lg/20 overflow-hidden">
       {isDarkMode ? (
         <BackgroundDark className="absolute top-0 left-0 w-full h-full z-0 opacity-60" />
       ) : (
@@ -65,7 +65,7 @@ function Presentation() {
               role="button"
               aria-label="LinkedIn profile"
               onClick={() =>
-                window.open("https://linkedin.com/in/aureliengabry", "_blank")
+                window.open("https://www.linkedin.com/in/aurelien-gabry", "_blank")
               }
             />
           </span>

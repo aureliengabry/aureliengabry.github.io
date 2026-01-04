@@ -17,7 +17,7 @@ function Menu() {
   };
 
   return (
-    <div className="fixed z-10 top-0 right-0 left-0 font-semibold text-2xl bg-portfolio-bg dark:bg-portfolio-bg-dark flex items-center h-[5rem] shadow-lg/20 dark:shadow-portfolio-text-dark p-6">
+    <div className="fixed z-10 top-0 right-0 left-0 font-semibold text-2xl bg-portfolio-bg dark:bg-portfolio-bg-dark flex items-center lg:h-[5rem] h-[3.5rem] shadow-lg/20 dark:shadow-portfolio-text-dark p-6">
       <Light
         className="ml-4 justify-self-start w-12 h-12 hidden dark:block cursor-pointer"
         role="button"

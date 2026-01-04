@@ -25,12 +25,12 @@ function Contact() {
             role="button"
             aria-label="LinkedIn profile"
             onClick={() =>
-              window.open("https://linkedin.com/in/aureliengabry", "_blank")
+              window.open("https://www.linkedin.com/in/aurelien-gabry", "_blank")
             }
           />
 
           <span className="border-2 h-12 items-center justify-center flex border-portfolio-text rounded-xl px-4 text-xl bg-portfolio-text font-bold text-portfolio-bg dark:bg-portfolio-text-dark dark:text-portfolio-text">
-            <a href="mailto:your-email@example.com">Send me an email</a>
+            <a href="mailto:aureliengabry@gmail.com">Send me an email</a>
           </span>
         </div>
       </div>
