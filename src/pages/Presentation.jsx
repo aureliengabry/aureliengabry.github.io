@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Arrow from "../assets/svg/double-arrow.svg?react";
-import Profil from "../assets/images/profil.png?react";
+import Profil from "../assets/images/profil.png";
 import Github from "../assets/svg/github.svg?react";
 import Linkedin from "../assets/svg/linkedin.svg?react";
 import BackgroundLight from "../assets/svg/bg_light.svg?react";
@@ -48,7 +48,7 @@ function Presentation() {
           <span className="md:text-5xl text-3xl text-portfolio-theme dark:text-portfolio-text-dark">
             Aurélien GABRY
           </span>
-          <span className="md:text-6xl sm:text-4xl text-3xl mt-2 uppercase ">
+          <span className="md:text-6xl sm:text-4xl text-3xl mt-2 uppercase">
             FullStack Developer
           </span>
           <span className="inline-flex gap-4 mt-2 items-center justify-center">
