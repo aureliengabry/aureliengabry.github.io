@@ -3,7 +3,8 @@ import Arrow from "../assets/svg/double-arrow.svg?react";
 import Profil from "../assets/images/profil.png?react";
 import Github from "../assets/svg/github.svg?react";
 import Linkedin from "../assets/svg/linkedin.svg?react";
-import Background from "../assets/svg/prism.svg?react";
+import BackgroundLight from "../assets/svg/bg_light.svg?react";
+import BackgroundDark from "../assets/svg/bg_dark.svg?react";
 import { customScrollTo } from "../utils/customScrollTo";
 
 function Presentation() {
@@ -26,20 +27,25 @@ function Presentation() {
 
     return () => observer.disconnect();
   }, []);
-  
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh)] bg-none font-bold shadow-lg/20">
-      {/* Background Prism - only show when dark mode is active */}
-      {!isDarkMode && <Background className="absolute top-0 left-0 w-full h-full z-0 opacity-60" />}
+      {isDarkMode ? (
+        <BackgroundDark className="absolute top-0 left-0 w-full h-full z-0 opacity-60" />
+      ) : (
+        <BackgroundLight className="absolute top-0 left-0 w-full h-full z-0 opacity-60" />
+      )}
       <div className="flex flex-row flex-wrap items-center justify-center z-1">
         <img
           src={Profil}
           alt="Profil fullstack developer"
-          className={`m-10 md:w-80 md:h-80 w-60 h-60 rounded-full object-cover border-portfolio-text justify-center block shadow-2xl ${isDarkMode ? "bg-gray-100 border-4 border-white" : ""}`}
+          className={`m-10 md:w-80 md:h-80 w-60 h-60 rounded-full object-cover border-portfolio-text justify-center block shadow-2xl ${
+            isDarkMode ? "bg-gray-100 border-4 border-white shadow-gray-400" : ""
+          }`}
         />
 
         <div className="flex flex-col md:ml-8 md:items-start items-center justify-center lg:mt-0 mt-8 z-1">
-          <span className="md:text-5xl text-3xl text-portfolio-theme">
+          <span className="md:text-5xl text-3xl text-portfolio-theme dark:text-portfolio-text-dark">
             Aurélien GABRY
           </span>
           <span className="md:text-6xl sm:text-4xl text-3xl mt-2 uppercase ">
