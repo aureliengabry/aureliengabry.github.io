@@ -17,7 +17,7 @@ function Menu() {
   };
 
   return (
-    <div className="fixed z-10 top-0 right-0 left-0 font-semibold text-2xl bg-portfolio-bg dark:bg-portfolio-bg-dark flex items-center lg:h-[5rem] h-[3.5rem] shadow-lg/20 dark:shadow-portfolio-text-dark p-6">
+    <div className="fixed relative z-10 top-0 right-0 left-0 font-semibold text-2xl bg-portfolio-bg dark:bg-portfolio-bg-dark flex items-center lg:h-[5rem] h-[3.5rem] shadow-lg/20 dark:shadow-portfolio-text-dark p-6">
       <Light
         className="ml-4 justify-self-start w-12 h-12 hidden dark:block cursor-pointer"
         role="button"
@@ -81,7 +81,7 @@ function Menu() {
 
       {/* Mobile Menu - vertical dropdown */}
       <div
-        className={`absolute top-[5rem] left-0 right-0 bg-portfolio-bg dark:bg-portfolio-bg-dark shadow-lg md:hidden transition-all duration-300 overflow-hidden ${
+        className={`absolute lg:top-[5rem] top-[3.5rem] left-0 right-0 bg-portfolio-bg dark:bg-portfolio-bg-dark shadow-lg md:hidden transition-all duration-300 overflow-hidden ${
           isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >

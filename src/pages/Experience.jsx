@@ -15,7 +15,7 @@ function Experiences() {
     },
     {
       date: "September 2021",
-      role: "Graduate from Master in Embedded Systems and IoT",
+      role: "Graduate from Master in Embedded Systems",
       company: "Université de Science et Technologie, Besançon, France",
       description:
         "Completed a Master's degree specializing in Embedded Systems.\

@@ -8,7 +8,19 @@ function Technologies() {
   const front_skills = {
     icon: <Frontend className="h-30 w-30 mx-auto  mb-4" />,
     title: "Front-end",
-    stack:  ["HTML5", "CSS3", "JavaScript","React", "Vue", "Redux","TailwindCSS", "Streamlit", "Figma"],
+    stack: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React",
+      "Vue",
+      "Nuxt",
+      "Redux",
+      "TailwindCSS",
+      "Vite",
+      "Streamlit",
+      "Figma",
+    ],
     description:
       "Create responsive and user-friendly interfaces with React and TailwindCSS.\
        I am proficient in HTML5, CSS3, and JavaScript, which allows me to design visually engaging layouts that enhance user experience.\
@@ -24,7 +36,7 @@ function Technologies() {
       "Flask",
       "FastAPI",
       "Asyncio",
-      "Docker" ,
+      "Docker",
       "Docker Compose",
       "Nginx",
       "MQTT",
@@ -42,9 +54,9 @@ function Technologies() {
     title: "Tools",
     stack: ["Jenkins", "SonarQube", "Nexus", "Git", "Github"],
     description:
-    "I utilize automated CI/CD pipelines using Jenkins to streamline build, test, and deployment processes.\
+      "I utilize automated CI/CD pipelines using Jenkins to streamline build, test, and deployment processes.\
     Integration tests are executed as part of these pipelines to ensure system stability and reliability before release.\
-    Code quality and coverage are continuously monitored through SonarQube, helping maintain high development standards."
+    Code quality and coverage are continuously monitored through SonarQube, helping maintain high development standards.",
   };
   return (
     <div id="technologies">

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import Arrow from "../assets/svg/double-arrow.svg?react";
 import Profil from "../assets/images/profil.png";
-import Github from "../assets/svg/github.svg?react";
-import Linkedin from "../assets/svg/linkedin.svg?react";
 import BackgroundLight from "../assets/svg/bg_light.svg?react";
 import BackgroundDark from "../assets/svg/bg_dark.svg?react";
 import { customScrollTo } from "../utils/customScrollTo";
+import ContactButton from "../components/ContactButton";
 
 function Presentation() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -51,24 +50,7 @@ function Presentation() {
           <span className="md:text-6xl sm:text-4xl text-3xl mt-2 uppercase">
             FullStack Developer
           </span>
-          <span className="inline-flex gap-4 mt-2 items-center justify-center">
-            <Github
-              className="w-12 h-12 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
-              role="button"
-              aria-label="Github profile"
-              onClick={() =>
-                window.open("https://github.com/aureliengabry", "_blank")
-              }
-            />
-            <Linkedin
-              className="w-12 h-12 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
-              role="button"
-              aria-label="LinkedIn profile"
-              onClick={() =>
-                window.open("https://www.linkedin.com/in/aurelien-gabry", "_blank")
-              }
-            />
-          </span>
+          <ContactButton className="gap-4 mt-2" />
         </div>
       </div>
       <div

@@ -1,6 +1,5 @@
 import Title from "../components/Title";
-import Github from "../assets/svg/github.svg?react";
-import Linkedin from "../assets/svg/linkedin.svg?react";
+import ContactButton from "../components/ContactButton";
 
 function Contact() {
   return (
@@ -12,23 +11,7 @@ function Contact() {
           email :
         </p>
         <div className="flex justify-center items-center gap-6 mt-4">
-          <Github
-            className="w-12 h-12 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
-            role="button"
-            aria-label="Github profile"
-            onClick={() =>
-              window.open("https://github.com/aureliengabry", "_blank")
-            }
-          />
-          <Linkedin
-            className="w-12 h-12 transition-transform hover:scale-110 duration-200 ease-in-out cursor-pointer"
-            role="button"
-            aria-label="LinkedIn profile"
-            onClick={() =>
-              window.open("https://www.linkedin.com/in/aurelien-gabry", "_blank")
-            }
-          />
-
+          <ContactButton className="gap-6"/>
           <span className="border-2 h-12 items-center justify-center flex border-portfolio-text rounded-xl px-4 text-xl bg-portfolio-text font-bold text-portfolio-bg dark:bg-portfolio-text-dark dark:text-portfolio-text">
             <a href="mailto:aureliengabry@gmail.com">Send me an email</a>
           </span>
