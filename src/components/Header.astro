@@ -1,0 +1,160 @@
+---
+import { EMAIL_HREF } from "../data/contact";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = ["work", "expertise", "about", "contact"].map((key) => ({
+  key,
+  href: `#${key}`,
+}));
+---
+
+<header
+  class="site-header top-0 scrolled:top-5 fixed left-1/2 -translate-x-1/2 z-10 w-full h-16 rounded-lg flex items-center justify-between px-5 pr-4 border border-border bg-bg/[0.62] backdrop-blur-lg transition-all duration-300 ease-in-out scrolled:w-[min(calc(100%-36px),1240px)] scrolled:rounded-2xl"
+>
+  <a class="text-xl font-extrabold tracking-heading" href="#top"
+    >AG<span class="text-blue">.</span></a
+  >
+  <nav
+    class="desktop-nav hidden md:flex gap-7 ml-20"
+    aria-label="Primary navigation"
+  >
+    {
+      navItems.map((item) => (
+        <a
+          class="text-sm font-semibold text-muted transition duration-200 hover:text-text"
+          href={item.href}
+        >
+          {t(`nav.${item.key}`)}
+        </a>
+      ))
+    }
+  </nav>
+  <div class="flex items-center gap-3 md:ml-auto">
+    <div
+      class="inline-flex h-9 items-center divide-x divide-border overflow-hidden rounded-lg border border-border font-mono text-xs"
+      role="group"
+      aria-label={t("common.language")}
+    >
+      <a
+        href="/"
+        aria-current={lang === "fr" ? "page" : undefined}
+        class:list={[
+          "h-full px-2.5 inline-flex items-center transition duration-200 hover:text-text",
+          lang === "fr" ? "bg-tint font-semibold text-text" : "text-muted",
+        ]}
+      >
+        FR
+      </a>
+      <a
+        href="/en/"
+        aria-current={lang === "en" ? "page" : undefined}
+        class:list={[
+          "h-full px-2.5 inline-flex items-center transition duration-200 hover:text-text",
+          lang === "en" ? "bg-tint font-semibold text-text" : "text-muted",
+        ]}
+      >
+        EN
+      </a>
+    </div>
+    <button
+      class="theme-toggle inline-flex items-center justify-center w-9 h-9 rounded-lg border border-border text-muted transition duration-200 hover:text-text hover:border-border-strong"
+      aria-label={t("common.toggleTheme")}
+      aria-pressed="false"
+      type="button"
+    >
+      <svg
+        class="w-4 h-4 theme-light:hidden"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+        ></path>
+      </svg>
+      <svg
+        class="w-4 h-4 hidden theme-light:block"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+      </svg>
+    </button>
+    <a
+      class="text-sm font-semibold md:inline-flex hidden text-text hover:text-muted"
+      href={EMAIL_HREF}
+    >
+      {t("common.letsTalk")}
+      <span class="text-blue ml-2">↗</span>
+    </a>
+    <button
+      class="menu-toggle flex md:hidden border-0 bg-transparent text-text cursor-pointer"
+      aria-label={t("common.openNav")}
+      aria-expanded="false"
+    >
+      <span class="text-2xl leading-none">☰</span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector(".site-header")!;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      header.classList.toggle("scrolled", window.scrollY > 30);
+    },
+    { passive: true },
+  );
+
+  const themeToggle = document.querySelector(".theme-toggle");
+  const root = document.documentElement;
+
+  const syncThemeToggle = () => {
+    themeToggle?.setAttribute(
+      "aria-pressed",
+      String(root.getAttribute("data-theme") === "light"),
+    );
+  };
+  syncThemeToggle();
+
+  themeToggle?.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", next === "light" ? "#f5f7fa" : "#070b12");
+    syncThemeToggle();
+  });
+
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".desktop-nav");
+
+  menuButton?.addEventListener("click", () => {
+    const open = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!open));
+    nav?.classList.toggle("mobile-open", !open);
+  });
+
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("mobile-open");
+      menuButton?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>

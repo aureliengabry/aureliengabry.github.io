@@ -1,0 +1,102 @@
+---
+import Eyebrow from "./ui/Eyebrow.astro";
+import DetailLabel from "./ui/DetailLabel.astro";
+import TagList from "./ui/TagList.astro";
+import DashboardMockup from "./visuals/DashboardMockup.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const protocolCount = 6;
+---
+
+<section
+  class="max-w-content mx-auto px-6 md:pt-24 py-36 scroll-mt-28"
+  id="work"
+>
+  <div class="md:grid grid-cols-2 gap-20 items-end max-w-none">
+    <div>
+      <Eyebrow index="02" i18nKey="selectedWork" />
+      <h2 class="text-h2 leading-heading-tight tracking-heading mb-5">
+        {t("selectedWork.heading")}
+      </h2>
+    </div>
+    <p class="text-muted leading-body-loose self-end">
+      {t("selectedWork.description")}
+    </p>
+  </div>
+
+  <article class="project" data-reveal>
+    <div
+      class="flex justify-between items-center font-mono text-xs tracking-label text-dim border-b border-border pb-4"
+    >
+      <span>{t("selectedWork.meta")}</span>
+      <span>{t("selectedWork.tags")}</span>
+    </div>
+    <div class="flex justify-between items-end mt-10 mb-8">
+      <div>
+        <h3
+          class="mb-4 text-[clamp(42px,6vw,76px)] leading-display tracking-heading"
+        >
+          {t("selectedWork.titleLead")}<br /><em>{t("selectedWork.titleEm")}</em
+          >
+        </h3>
+        <p class="max-w-xl text-muted">{t("selectedWork.description2")}</p>
+      </div>
+      <span class="text-blue text-2xl">↗</span>
+    </div>
+
+    <DashboardMockup />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-8">
+      <div>
+        <DetailLabel i18nKey="selectedWork.details.challengeLabel" />
+        <p class="text-muted text-sm leading-body">
+          {t("selectedWork.details.challenge")}
+        </p>
+      </div>
+      <div>
+        <DetailLabel i18nKey="selectedWork.details.roleLabel" />
+        <p class="text-muted text-sm leading-body">
+          {t("selectedWork.details.role")}
+        </p>
+      </div>
+      <div>
+        <DetailLabel i18nKey="selectedWork.details.techLabel" />
+        <TagList i18nKey="selectedWork.details.tags" count={7} />
+      </div>
+    </div>
+
+    <div class="mt-16 pt-16 border-t border-border">
+      <DetailLabel i18nKey="selectedWork.integration.label" />
+      <h4
+        class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading"
+      >
+        {t("selectedWork.integration.heading")}
+      </h4>
+      <p class="max-w-2xl mb-8 text-muted text-sm leading-body">
+        {t("selectedWork.integration.description")}
+      </p>
+      <div
+        class="protocol-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"
+      >
+        {
+          Array.from({ length: protocolCount }, (_, i) => (
+            <div
+              class="glass min-h-36 p-6 rounded-2xl transition duration-300 hover:-translate-y-1"
+              data-reveal
+            >
+              <strong class="block font-mono text-lg">
+                {t(`selectedWork.integration.protocols.${i}.name`)}
+              </strong>
+              <span class="block mt-11 text-dim text-xs">
+                {t(`selectedWork.integration.protocols.${i}.description`)}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </article>
+</section>

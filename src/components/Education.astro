@@ -1,0 +1,66 @@
+---
+import SectionIntro from "./ui/SectionIntro.astro";
+import TagList from "./ui/TagList.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const entries = [
+  {
+    org: "Université de Technologie de Belfort-Montbéliard — Besançon",
+    tagCount: 6,
+  },
+  { org: "Expleo", tagCount: 5 },
+];
+---
+
+<section
+  class="max-w-content mx-auto px-6 py-24 md:py-36 scroll-mt-28"
+  id="education"
+>
+  <SectionIntro index="06" i18nKey="education" />
+
+  <div
+    class="timeline relative border-t border-border md:before:content-[''] md:before:absolute md:before:left-[180px] md:before:top-0 md:before:bottom-0 md:before:w-px md:before:bg-border"
+  >
+    {
+      entries.map((entry, i) => {
+        const strong = t(`education.entries.${i}.descriptionStrong`);
+        return (
+          <article
+            class="md:grid grid-cols-timeline min-h-72 border-b border-border"
+            data-reveal
+          >
+            <div class="pt-8 font-mono text-xs tracking-label text-blue md:pr-8">
+              {t(`education.entries.${i}.date`)}
+            </div>
+            <div class="timeline-content relative pt-2 pb-10 md:pt-8 md:pl-12 md:pr-0">
+              <div class="flex justify-between gap-5 mb-5">
+                <span class="font-mono text-xs tracking-label text-blue">
+                  {t(`education.entries.${i}.kind`)}
+                </span>
+                <span class="font-mono text-xs tracking-label text-dim">
+                  {t(`education.entries.${i}.location`)}
+                </span>
+              </div>
+              <h3 class="mt-0 mb-1 text-3xl tracking-title">
+                {t(`education.entries.${i}.title`)}
+              </h3>
+              <p class="text-text font-semibold">{entry.org}</p>
+              <p class="max-w-3xl text-muted text-sm leading-body-loose">
+                {t(`education.entries.${i}.descriptionPre`)}
+                {strong && <strong>{strong}</strong>}
+                {t(`education.entries.${i}.descriptionPost`)}
+              </p>
+              <TagList
+                i18nKey={`education.entries.${i}.tags`}
+                count={entry.tagCount}
+              />
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+</section>

@@ -1,0 +1,64 @@
+---
+import Eyebrow from "./ui/Eyebrow.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const factCount = 4;
+---
+
+<section class="max-w-content mx-auto px-6 py-36 scroll-mt-28" id="about">
+  <div
+    class="grid grid-cols-1 md:grid-cols-[0.7fr_1.3fr] gap-10 md:gap-24 items-center"
+  >
+    <div
+      class="glass relative min-h-96 md:min-h-[560px] rounded-card overflow-hidden flex flex-col items-center justify-center before:content-[''] before:absolute before:w-[300px] before:h-[300px] before:rounded-full before:bg-blue-strong/[0.16] before:blur-[60px]"
+      data-reveal
+    >
+      <span
+        class="relative text-9xl leading-none font-extrabold tracking-[-0.12em]"
+        >AG</span
+      >
+      <small class="relative mt-6 text-dim font-mono text-xs tracking-loose"
+        >{t("about.caption")}</small
+      >
+    </div>
+    <div data-reveal>
+      <Eyebrow index="05" i18nKey="about" />
+      <h2
+        class="text-[clamp(42px,5vw,68px)] leading-heading tracking-heading mb-5"
+      >
+        {t("about.heading")}
+      </h2>
+      <p class="max-w-2xl text-muted text-base leading-body-looser">
+        {t("about.paragraph1")}
+      </p>
+      <p class="max-w-2xl text-muted text-base leading-body-looser">
+        {t("about.paragraph2")}
+      </p>
+      <p class="max-w-2xl text-muted text-base leading-body-looser">
+        {t("about.paragraph3")}
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 mt-9 border-t border-border">
+        {
+          Array.from({ length: factCount }, (_, i) => (
+            <div
+              class:list={[
+                "py-4 border-b border-border",
+                i % 2 === 0 && "sm:pr-8",
+              ]}
+            >
+              <small class="block text-dim font-mono text-xs">
+                {t(`about.facts.${i}.label`)}
+              </small>
+              <strong class="block mt-1 text-sm">
+                {t(`about.facts.${i}.value`)}
+              </strong>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+interface Props {
+  i18nKey: string;
+  count: number;
+}
+
+const { i18nKey, count } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tags = Array.from({ length: count }, (_, i) => t(`${i18nKey}.${i}`));
+---
+
+<div class="flex flex-wrap gap-2">
+  {
+    tags.map((tag) => (
+      <span class="rounded-md border border-border px-2 py-1.5 font-mono text-xs text-tag bg-tint">
+        {tag}
+      </span>
+    ))
+  }
+</div>

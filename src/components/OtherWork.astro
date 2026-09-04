@@ -1,0 +1,54 @@
+---
+import SectionIntro from "./ui/SectionIntro.astro";
+import TagList from "./ui/TagList.astro";
+import { LINKS } from "../data/contact";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="max-w-content mx-auto px-6 py-24 md:py-36">
+  <SectionIntro index="07" i18nKey="otherWork" />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+    <article class="glass min-h-72 p-7 rounded-2xl">
+      <div class="flex justify-between">
+        <span class="font-mono text-xs tracking-widest text-blue"
+          >{t("otherWork.card.kicker")}</span
+        >
+        <span class="text-blue text-xl">↗</span>
+      </div>
+      <div
+        class="mt-8 rounded-xl overflow-hidden border border-border aspect-[1200/649]"
+      >
+        <img
+          src="/images/projects/azelia-photographie.webp"
+          alt={t("otherWork.card.previewAlt")}
+          width="1200"
+          height="649"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <h3 class="mt-6 mb-2.5 text-3xl tracking-title">
+        {t("otherWork.card.title")}
+      </h3>
+      <p class="text-muted text-sm leading-body">
+        {t("otherWork.card.description")}
+      </p>
+      <TagList i18nKey="otherWork.card.tags" count={3} />
+      <a
+        class="inline-block mt-5 text-text text-xs font-bold hover:text-soft"
+        href={LINKS.azeliaPhotographie}
+        target="_blank"
+        rel="noopener">{t("otherWork.card.link")} ↗</a
+      >
+    </article>
+
+    <div class="glass flex items-center gap-6 p-8 rounded-2xl" data-reveal>
+      <span class="text-blue text-2xl">→</span>
+      <p class="text-muted text-sm">{t("otherWork.note")}</p>
+    </div>
+  </div>
+</section>

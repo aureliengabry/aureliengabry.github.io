@@ -1,0 +1,36 @@
+---
+interface Props {
+  href: string;
+  icon?: string;
+  variant?: "primary" | "secondary";
+  size?: "md" | "lg";
+  class?: string;
+}
+
+const {
+  href,
+  icon = "↗",
+  variant = "primary",
+  size = "md",
+  class: className,
+} = Astro.props;
+
+const sizeClasses = size === "lg" ? "min-h-14 px-6" : "min-h-12 px-5";
+const variantClasses =
+  variant === "primary"
+    ? "bg-raise shadow-raised text-text"
+    : "text-muted bg-transparent";
+---
+
+<a
+  href={href}
+  class:list={[
+    "inline-flex items-center justify-center rounded-xl border border-border text-sm font-bold transition duration-200 hover:-translate-y-0.5",
+    sizeClasses,
+    variantClasses,
+    className,
+  ]}
+>
+  <slot />
+  <span class="text-blue ml-2">{icon}</span>
+</a>

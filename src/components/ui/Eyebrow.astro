@@ -1,0 +1,17 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+interface Props {
+  index: string;
+  i18nKey: string;
+}
+
+const { index, i18nKey } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<p class="eyebrow font-mono text-xs tracking-eyebrow text-blue mb-6">
+  {index} / {t(`${i18nKey}.label`)}
+</p>

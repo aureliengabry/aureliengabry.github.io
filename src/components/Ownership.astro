@@ -1,0 +1,34 @@
+---
+import SectionIntro from "./ui/SectionIntro.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const itemCount = 4;
+---
+
+<section class="max-w-content mx-auto px-6 py-24 md:py-36">
+  <SectionIntro index="04" i18nKey="ownership" />
+  <div class="grid grid-cols-1 md:grid-cols-2 border-t border-border">
+    {
+      Array.from({ length: itemCount }, (_, i) => (
+        <div
+          class:list={[
+            "p-8 border-b border-border",
+            i % 2 === 0 && "md:border-r",
+          ]}
+          data-reveal
+        >
+          <span class="font-mono text-xs text-blue">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <h3 class="mt-4 mb-2 text-xl">{t(`ownership.items.${i}.title`)}</h3>
+          <p class="max-w-md text-muted text-sm leading-body">
+            {t(`ownership.items.${i}.description`)}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>

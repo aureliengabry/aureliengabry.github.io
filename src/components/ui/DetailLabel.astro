@@ -1,0 +1,16 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+interface Props {
+  i18nKey: string;
+}
+
+const { i18nKey } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<p class="detail-label font-mono text-xs tracking-widest text-blue mb-3">
+  {t(i18nKey)}
+</p>

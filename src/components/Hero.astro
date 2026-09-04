@@ -1,0 +1,73 @@
+---
+import CtaButton from "./ui/CtaButton.astro";
+import PulsingDot from "./ui/PulsingDot.astro";
+import CircuitBoard from "./visuals/CircuitBoard.astro";
+import { EMAIL_HREF } from "../data/contact";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Reusable call-to-action blocks (avoids duplicating near-identical anchors).
+const actions = [
+  {
+    i18nKey: "hero.actionPrimary",
+    icon: "↓",
+    href: "#work",
+    style: "primary",
+  },
+  {
+    i18nKey: "common.getInTouch",
+    icon: "↗",
+    href: EMAIL_HREF,
+    style: "secondary",
+  },
+] as const;
+---
+
+<section
+  class="w-full px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 md:min-h-[920px] pt-40 md:pt-48 grid md:grid-cols-[1.05fr_0.95fr] md:gap-20 items-center"
+>
+  <div>
+    <p
+      class="eyebrow flex items-center gap-2 text-xs font-mono tracking-eyebrow text-blue"
+    >
+      <PulsingDot />
+      {t("hero.eyebrow")}
+    </p>
+    <h1
+      class="max-w-3xl mb-8 text-[clamp(58px,7vw,100px)] leading-[0.92] tracking-display font-extrabold"
+    >
+      Aurélien <em>GABRY</em>
+    </h1>
+    <p class="max-w-2xl text-muted text-lg leading-body">
+      {t("hero.leadPre")}<strong>{t("hero.leadStrong")}</strong>{
+        t("hero.leadPost")
+      }
+    </p>
+    <div class="flex flex-wrap gap-3 mt-8 mb-7">
+      {
+        actions.map((action) => (
+          <CtaButton
+            href={action.href}
+            icon={action.icon}
+            variant={action.style}
+          >
+            {t(action.i18nKey)}
+          </CtaButton>
+        ))
+      }
+    </div>
+    <div class="flex flex-wrap gap-2.5 text-dim font-mono text-xs">
+      <span>Python</span><i class="font-normal text-faint">·</i><span
+        >React</span
+      ><i class="font-normal text-faint">·</i><span>Vue</span><i
+        class="font-normal text-faint">·</i
+      ><span>Linux / ARM</span><i class="font-normal text-faint">·</i><span
+        >Docker</span
+      >
+    </div>
+  </div>
+
+  <CircuitBoard />
+</section>
