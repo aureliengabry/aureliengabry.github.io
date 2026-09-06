@@ -1,0 +1,138 @@
+---
+import PulsingDot from "../ui/PulsingDot.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Reusable circuit nodes (avoids duplicating the node + trace-path blocks).
+// `pos` and the SVG `path` are literal per-item strings (not built via
+// template interpolation) so Tailwind's static scanner can see `pos` and
+// generate the utility — same pattern as the previous OrbitDiagram.
+const circuitNodes = [
+  {
+    pos: "top-[11%] left-[38%]",
+    index: "01",
+    label: "React / Vue",
+    path: "M195,60 L195,105 L200,118 L200,132",
+    delay: "0s",
+  },
+  {
+    pos: "right-[7%] top-[43%]",
+    index: "02",
+    label: "Python",
+    path: "M330,205 L285,205 L270,200 L268,200",
+    delay: "0.85s",
+  },
+  {
+    pos: "bottom-[11%] left-[35%]",
+    index: "03",
+    label: "SQLite",
+    path: "M185,330 L185,285 L195,270 L200,268",
+    delay: "1.7s",
+  },
+  {
+    pos: "left-[5%] top-[43%]",
+    index: "04",
+    label: "Linux / ARM",
+    path: "M70,205 L115,205 L130,200 L132,200",
+    delay: "2.55s",
+  },
+];
+---
+
+<div
+  class="hidden md:block relative w-full max-w-xl aspect-square justify-self-end [perspective:1600px]"
+  aria-hidden="true"
+  data-reveal
+>
+  <div
+    class="relative w-full h-full rounded-[28px] border border-border-strong glass overflow-hidden shadow-[0_40px_120px_-24px_rgba(37,99,235,0.35)] [transform-style:preserve-3d] [transform:rotateX(9deg)_rotateY(-15deg)] motion-safe:animate-[circuit-tilt_13s_ease-in-out_infinite]"
+  >
+    <!-- Ambient glow, recessed behind the board surface -->
+    <div
+      class="absolute w-[65%] h-[65%] left-[17%] top-[17%] rounded-full bg-blue-strong/[0.16] blur-[55px] [transform:translateZ(-60px)]"
+    >
+    </div>
+
+    <!-- PCB via-hole texture -->
+    <div
+      class="absolute inset-0 opacity-[0.35] [transform:translateZ(1px)]"
+      style="background-image: radial-gradient(color-mix(in srgb, var(--color-blue) 35%, transparent) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
+
+    <!-- Circuit traces + travelling signal pulses -->
+    <svg
+      class="absolute inset-0 w-full h-full [transform:translateZ(3px)]"
+      viewBox="0 0 400 400"
+      fill="none"
+    >
+      {
+        circuitNodes.map((node) => (
+          <path
+            d={node.path}
+            stroke="var(--color-blue)"
+            stroke-opacity="0.28"
+            stroke-width="1.5"
+          />
+        ))
+      }
+      <g class="opacity-0 motion-safe:opacity-100">
+        {
+          circuitNodes.map((node) => (
+            <circle r="3.2" fill="var(--color-blue)">
+              <animateMotion
+                dur="3.4s"
+                begin={node.delay}
+                repeatCount="indefinite"
+                path={node.path}
+              />
+              <animate
+                attributeName="opacity"
+                values="0;1;1;0"
+                keyTimes="0;0.12;0.85;1"
+                dur="3.4s"
+                begin={node.delay}
+                repeatCount="indefinite"
+              />
+            </circle>
+          ))
+        }
+      </g>
+    </svg>
+
+    <!-- Central chip -->
+    <div
+      class="absolute inset-[33%] rounded-2xl flex flex-col items-center justify-center text-center border border-border-strong bg-[color-mix(in_srgb,var(--color-bg)_74%,transparent)] [transform:translateZ(42px)] motion-safe:animate-[chip-pulse_4s_ease-in-out_infinite]"
+    >
+      <span class="text-dim font-mono text-xs tracking-[0.16em]"
+        >{t("hero.orbit.system")}</span
+      >
+      <strong class="mt-2 mb-3 text-3xl leading-[0.92] tracking-display"
+        >FULL<br />STACK</strong
+      >
+      <span class="font-mono text-xs text-muted flex items-center"
+        ><PulsingDot class="mr-2" />{t("hero.orbit.online")}</span
+      >
+    </div>
+
+    <!-- Tech nodes, elevated above the board surface -->
+    {
+      circuitNodes.map((node, i) => (
+        <div
+          class:list={[
+            node.pos,
+            "absolute grid gap-1 px-5 py-3.5 rounded-xl bg-bg/[0.68] border border-border backdrop-blur-lg transition duration-300 [transform:translateZ(22px)] hover:[transform:translateZ(34px)_scale(1.05)] hover:border-blue-strong/40 hover:bg-bg/[0.85]",
+          ]}
+        >
+          <b class="text-blue font-mono text-xs">{node.index}</b>
+          <strong class="text-sm">{node.label}</strong>
+          <small class="text-dim text-xs">
+            {t(`hero.orbit.nodes.${i}.desc`)}
+          </small>
+        </div>
+      ))
+    }
+  </div>
+</div>

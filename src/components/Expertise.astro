@@ -1,0 +1,43 @@
+---
+import SectionIntro from "./ui/SectionIntro.astro";
+import TagList from "./ui/TagList.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const cards = [
+  { key: "expertise.cards.0", tagCount: 4 },
+  { key: "expertise.cards.1", tagCount: 4 },
+  { key: "expertise.cards.2", tagCount: 9 },
+];
+---
+
+<section
+  class="max-w-content mx-auto px-6 py-24 md:py-36 scroll-mt-28"
+  id="expertise"
+>
+  <SectionIntro index="01" i18nKey="expertise" />
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+    {
+      cards.map((card, i) => (
+        <article
+          class="glass min-h-96 md:min-h-auto p-8 rounded-card transition duration-300 hover:-translate-y-1.5"
+          data-reveal
+        >
+          <span class="font-mono text-xs text-blue">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <h3 class="mt-24 md:mt-14 text-2xl tracking-subheading">
+            {t(`${card.key}.title`)}
+          </h3>
+          <p class="text-muted text-sm leading-body">
+            {t(`${card.key}.description`)}
+          </p>
+          <TagList i18nKey={`${card.key}.tags`} count={card.tagCount} />
+        </article>
+      ))
+    }
+  </div>
+</section>

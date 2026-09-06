@@ -1,0 +1,39 @@
+---
+import Eyebrow from "./ui/Eyebrow.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const rowCount = 4;
+---
+
+<section class="max-w-content mx-auto px-6 py-24 md:py-36">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div>
+      <Eyebrow index="03" i18nKey="constraints" />
+      <h2
+        class="max-w-xl text-[clamp(45px,5vw,68px)] leading-heading tracking-heading mb-5"
+      >
+        {t("constraints.heading")}
+      </h2>
+      <p class="max-w-xl text-muted leading-body-loose">
+        {t("constraints.description")}
+      </p>
+    </div>
+    <div class="border-t border-border">
+      {
+        Array.from({ length: rowCount }, (_, i) => (
+          <div class="flex justify-between gap-8 py-5 border-b border-border">
+            <span class="font-mono text-xs text-blue">
+              {t(`constraints.rows.${i}.label`)}
+            </span>
+            <strong class="text-sm font-semibold">
+              {t(`constraints.rows.${i}.value`)}
+            </strong>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

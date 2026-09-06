@@ -1,0 +1,33 @@
+---
+import { NAME, LINKS } from "../data/contact";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="max-w-content mx-auto px-6 pt-9 pb-12 border-t border-border flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-dim text-xs"
+>
+  <div class="flex flex-wrap gap-x-6 gap-y-1">
+    <strong class="text-text text-xs">{NAME.toUpperCase()}</strong><span
+      >{t("footer.role")}</span
+    >
+  </div>
+  <div class="flex flex-wrap gap-x-6 gap-y-1">
+    <a
+      class="hover:text-text transition duration-200"
+      href={LINKS.github}
+      target="_blank"
+      rel="noopener">GitHub</a
+    >
+    <a
+      class="hover:text-text transition duration-200"
+      href={LINKS.linkedin}
+      target="_blank"
+      rel="noopener">LinkedIn</a
+    >
+    <span>Python · React · Vue</span><span>© {year}</span>
+  </div>
+</footer>

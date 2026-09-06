@@ -1,0 +1,33 @@
+---
+import CtaButton from "./ui/CtaButton.astro";
+import Eyebrow from "./ui/Eyebrow.astro";
+import { EMAIL_HREF } from "../data/contact";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section
+  class="relative max-w-content mx-auto px-6 min-h-[680px] flex flex-col items-start justify-center overflow-hidden scroll-mt-28"
+  id="contact"
+>
+  <div
+    class="absolute w-[700px] h-[400px] left-[10%] top-[30%] bg-[radial-gradient(ellipse,rgba(37,99,235,0.2),transparent_65%)] blur-2xl pointer-events-none"
+  >
+  </div>
+  <div class="relative z-10">
+    <Eyebrow index="08" i18nKey="contact" />
+    <h2
+      class="max-w-4xl text-[clamp(60px,9vw,120px)] leading-[0.86] tracking-[-0.075em] mb-6"
+    >
+      {t("contact.titleLine1")}<br /><em>{t("contact.titleLine2")}</em>
+    </h2>
+    <p class="max-w-xl text-muted leading-body-loose">
+      {t("contact.description")}
+    </p>
+    <CtaButton href={EMAIL_HREF} size="lg" class="mt-5">
+      {t("common.getInTouch")}
+    </CtaButton>
+  </div>
+</section>

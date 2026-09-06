@@ -1,0 +1,28 @@
+---
+interface Props {
+  color?: "green" | "blue" | "mint";
+  class?: string;
+}
+
+const { color = "green", class: className = "" } = Astro.props;
+
+const dotColor: Record<NonNullable<Props["color"]>, string> = {
+  green: "bg-green",
+  blue: "bg-blue",
+  mint: "bg-mint",
+};
+
+const colorClass = dotColor[color];
+---
+
+<span class:list={["relative inline-flex size-1.5", className]}>
+  <span
+    class:list={[
+      "absolute inline-flex h-full w-full animate-ping rounded-full opacity-75",
+      colorClass,
+    ]}
+  >
+  </span>
+  <span class:list={["relative inline-flex size-1.5 rounded-full", colorClass]}
+  ></span>
+</span>

@@ -1,0 +1,194 @@
+---
+// Reusable SEO head component: meta tags, Open Graph, Twitter Cards,
+// canonical URL, robots directives and JSON-LD structured data.
+// Rendered by the Layout so every page inherits a complete, indexable <head>.
+import { NAME, TWITTER_HANDLE, LINKS } from "../data/contact";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const role = t("footer.role");
+const ogLocale = lang === "fr" ? "fr_FR" : "en_US";
+const ogLocaleAlternate = lang === "fr" ? "en_US" : "fr_FR";
+const twitterProfile = `https://x.com/${TWITTER_HANDLE.replace("@", "")}`;
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string[] | string;
+  author?: string;
+  type?: string;
+  image?: string;
+  robots?: string;
+  themeColor?: string;
+}
+
+const {
+  title = t("seo.title"),
+  description = t("seo.description"),
+  keywords = [
+    NAME,
+    "full-stack developer",
+    "full-stack software engineer",
+    "Python developer",
+    "React developer",
+    "Vue developer",
+    "backend developer",
+    "frontend developer",
+    "embedded software engineer",
+    "Linux ARM software",
+    "distributed systems engineer",
+    "software engineer France",
+    "freelance software developer",
+    "API developer",
+    "Flask",
+    "SQLAlchemy",
+    "SQLite",
+    "Docker",
+    "MQTT",
+    "IoT developer",
+    "public transport ticketing software",
+    "software architecture",
+  ],
+  author = NAME,
+  type = "website",
+  image = "/og-image.png",
+  robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  themeColor = "#070b12",
+} = Astro.props;
+
+const keywordList = Array.isArray(keywords) ? keywords.join(", ") : keywords;
+
+// Canonical URL resolves the current path against the configured site.
+const siteURL = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site)
+  : Astro.url;
+const canonical = siteURL;
+const absoluteImage = Astro.site
+  ? new URL(image, Astro.site).toString()
+  : image;
+
+const titleWithSite = `${title} — ${NAME}`;
+
+// Structured data (Schema.org) for rich results.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${canonical}#person`,
+      name: NAME,
+      url: canonical,
+      image: absoluteImage,
+      jobTitle: role,
+      description:
+        "Full-stack software engineer specializing in backend services (Python, Flask, SQLAlchemy, SQLite), frontend interfaces (React, Vue) and embedded Linux/ARM software, distributed systems and transport ticketing platforms.",
+      knowsAbout: [
+        "Python",
+        "React",
+        "Vue",
+        "Flask",
+        "SQLAlchemy",
+        "SQLite",
+        "REST APIs",
+        "Embedded Systems",
+        "Linux",
+        "ARM",
+        "Docker",
+        "MQTT",
+        "SNMP",
+        "Distributed Systems",
+        "Software Architecture",
+        "IoT",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "FR",
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Université de Technologie de Belfort-Montbéliard",
+      },
+      knowsLanguage: ["en", "fr"],
+      sameAs: [twitterProfile, LINKS.github, LINKS.linkedin],
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${canonical}#profile`,
+      url: canonical,
+      name: titleWithSite,
+      description,
+      mainEntity: { "@id": `${canonical}#person` },
+      inLanguage: lang,
+      about: { "@id": `${canonical}#person` },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${new URL("/", canonical)}#website`,
+      url: new URL("/", canonical),
+      name: titleWithSite,
+      description,
+      inLanguage: lang,
+      author: { "@id": `${canonical}#person` },
+      publisher: { "@id": `${canonical}#person` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: titleWithSite,
+      description,
+      isPartOf: { "@id": `${new URL("/", canonical)}#website` },
+      mainEntity: { "@id": `${canonical}#person` },
+      isAbout: { "@id": `${canonical}#person` },
+      inLanguage: lang,
+    },
+  ],
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{titleWithSite}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywordList} />
+<meta name="author" content={author} />
+<meta name="robots" content={robots} />
+<meta name="theme-color" content={themeColor} />
+<meta name="color-scheme" content="dark light" />
+<meta name="geo.region" content="FR" />
+<meta name="geo.placename" content="France" />
+
+<link rel="canonical" href={canonical} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={`${NAME} — ${role}`} />
+<meta property="og:title" content={titleWithSite} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:alt" content={`${NAME} — ${role}`} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={ogLocaleAlternate} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={titleWithSite} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImage} />
+<meta name="twitter:image:alt" content={`${NAME} — ${role}`} />
+<meta name="twitter:site" content={TWITTER_HANDLE} />
+<meta name="twitter:creator" content={TWITTER_HANDLE} />
+
+<!-- Structured data (JSON-LD) -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(jsonLd)}
+  is:inline
+/>
