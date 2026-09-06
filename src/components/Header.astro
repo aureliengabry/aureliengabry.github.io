@@ -12,7 +12,7 @@ const navItems = ["work", "expertise", "about", "contact"].map((key) => ({
 ---
 
 <header
-  class="site-header top-0 scrolled:top-5 fixed left-1/2 -translate-x-1/2 z-10 w-full h-16 rounded-lg flex items-center justify-between px-5 pr-4 border border-border bg-bg/[0.62] backdrop-blur-lg transition-all duration-300 ease-in-out scrolled:w-[min(calc(100%-36px),1240px)] scrolled:rounded-2xl"
+  class="site-header top-0 md:scrolled:top-5 fixed left-1/2 -translate-x-1/2 z-10 w-full h-16 rounded-lg flex items-center justify-between px-5 pr-4 border border-border bg-bg/[0.62] backdrop-blur-lg transition-all duration-300 ease-in-out md:scrolled:w-[min(calc(100%-36px),1240px)] md:scrolled:rounded-2xl"
 >
   <a class="text-xl font-extrabold tracking-heading" href="#top"
     >AG<span class="text-blue">.</span></a
@@ -99,11 +99,19 @@ const navItems = ["work", "expertise", "about", "contact"].map((key) => ({
       <span class="text-blue ml-2">↗</span>
     </a>
     <button
-      class="menu-toggle flex md:hidden border-0 bg-transparent text-text cursor-pointer"
+      class="menu-toggle group flex md:hidden flex-col justify-between w-6 h-5 border-0 bg-transparent cursor-pointer"
       aria-label={t("common.openNav")}
       aria-expanded="false"
     >
-      <span class="text-2xl leading-none">☰</span>
+      <span
+        class="block h-0.5 w-full rounded-full bg-text origin-center transition duration-300 ease-in-out group-aria-expanded:translate-y-[9px] group-aria-expanded:rotate-45"
+      ></span>
+      <span
+        class="block h-0.5 w-full rounded-full bg-text transition duration-300 ease-in-out group-aria-expanded:opacity-0"
+      ></span>
+      <span
+        class="block h-0.5 w-full rounded-full bg-text origin-center transition duration-300 ease-in-out group-aria-expanded:-translate-y-[9px] group-aria-expanded:-rotate-45"
+      ></span>
     </button>
   </div>
 </header>
