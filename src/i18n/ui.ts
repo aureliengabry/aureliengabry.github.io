@@ -13,7 +13,7 @@ export const ui = {
   en: {
     "seo.title": "Full-Stack & Embedded Software Engineer",
     "seo.description":
-      "Full-stack engineer in France. I build web apps, APIs and embedded software — currently a transport platform handling 1M+ ticket validations a day.",
+      "Full-stack engineer in Besançon, France, available for freelance. Web apps, APIs, embedded software — currently a transport platform at 1M+ daily validations.",
     "nav.work": "Work",
     "nav.expertise": "Expertise",
     "nav.about": "About",
@@ -24,7 +24,7 @@ export const ui = {
     "common.openNav": "Open navigation",
     "common.language": "Language",
     "common.backToTop": "Back to top",
-    "hero.eyebrow": "FULL-STACK SOFTWARE ENGINEER · FRANCE",
+    "hero.eyebrow": "AVAILABLE FOR FREELANCE · BESANÇON, FRANCE",
     "hero.leadPre":
       "I build software that has to keep working — web apps, APIs, and the embedded systems behind them. For the last five years that's meant a public transport platform handling ",
     "hero.leadStrong": "more than a million ticket validations a day",
@@ -173,10 +173,10 @@ export const ui = {
       "I like understanding how the whole thing fits together: the business logic, the data, the hardware, and the people relying on it at six in the morning when something has gone wrong.",
     "about.paragraph3":
       "Working on something thousands of people depend on daily taught me to care as much about reliability and maintainability as about features. That's the habit I bring to any project.",
-    "about.facts.0.label": "EXPERIENCE",
-    "about.facts.0.value": "5+ years",
+    "about.facts.0.label": "AVAILABILITY",
+    "about.facts.0.value": "Open to freelance",
     "about.facts.1.label": "BASED IN",
-    "about.facts.1.value": "France",
+    "about.facts.1.value": "Besançon, France",
     "about.facts.2.label": "LANGUAGES",
     "about.facts.2.value": "French · English",
     "about.facts.3.label": "DOMAIN",
@@ -227,18 +227,18 @@ export const ui = {
     "otherWork.card.tags.2": "UX",
     "otherWork.card.link": "Visit project",
     "otherWork.note":
-      "Shorter engagements too: adding a feature to an existing codebase, tracking down a bug nobody can reproduce, or supporting something already in production.",
+      "Right now I'm building a site for a fitness coach. Alongside that, shorter engagements: adding a feature to an existing codebase, tracking down a bug nobody can reproduce, or supporting something already in production.",
     "contact.label": "CONTACT",
     "contact.titleLine1": "Tell me about",
     "contact.titleLine2": "your project.",
     "contact.description":
-      "Something to build, something to fix, or just a second opinion on an approach — send me a few lines about it and I'll tell you honestly whether I'm the right person for it.",
+      "I'm available for freelance work, remote or on-site. Something to build, something to fix, or just a second opinion on an approach — send me a few lines about it and I'll tell you honestly whether I'm the right person for it.",
     "footer.role": "Full-Stack Software Engineer",
   },
   fr: {
     "seo.title": "Ingénieur Logiciel Full-Stack & Embarqué",
     "seo.description":
-      "Ingénieur full-stack en France. Applications web, API et logiciels embarqués — actuellement une plateforme de transport public : 1M+ validations par jour.",
+      "Ingénieur full-stack à Besançon, France, disponible en freelance. Applications web, API et logiciels embarqués — transport public : 1M+ validations/jour.",
     "nav.work": "Projets",
     "nav.expertise": "Expertise",
     "nav.about": "À propos",
@@ -249,7 +249,7 @@ export const ui = {
     "common.openNav": "Ouvrir la navigation",
     "common.language": "Langue",
     "common.backToTop": "Retour en haut",
-    "hero.eyebrow": "INGÉNIEUR LOGICIEL FULL-STACK · FRANCE",
+    "hero.eyebrow": "DISPONIBLE EN FREELANCE · BESANÇON, FRANCE",
     "hero.leadPre":
       "Je conçois des logiciels qui doivent tourner en continu — applications web, API, et les systèmes embarqués derrière. Depuis cinq ans, sur une plateforme de transport public qui traite ",
     "hero.leadStrong": "plus d'un million de validations par jour",
@@ -400,10 +400,10 @@ export const ui = {
       "J'aime comprendre comment l'ensemble tient debout : la logique métier, les données, le matériel, et les gens qui comptent dessus à six heures du matin quand quelque chose ne va pas.",
     "about.paragraph3":
       "Travailler sur un système dont des milliers de personnes dépendent chaque jour m'a appris à accorder autant d'importance à la fiabilité et à la maintenabilité qu'aux fonctionnalités. C'est ce que j'apporte sur chaque projet.",
-    "about.facts.0.label": "EXPÉRIENCE",
-    "about.facts.0.value": "5+ ans",
-    "about.facts.1.label": "BASÉ EN",
-    "about.facts.1.value": "France",
+    "about.facts.0.label": "DISPONIBILITÉ",
+    "about.facts.0.value": "Ouvert au freelance",
+    "about.facts.1.label": "BASÉ À",
+    "about.facts.1.value": "Besançon, France",
     "about.facts.2.label": "LANGUES",
     "about.facts.2.value": "Français · Anglais",
     "about.facts.3.label": "DOMAINE",
@@ -454,12 +454,12 @@ export const ui = {
     "otherWork.card.tags.2": "UX",
     "otherWork.card.link": "Voir le projet",
     "otherWork.note":
-      "Des missions plus courtes aussi : ajouter une fonctionnalité à une base de code existante, traquer un bug que personne n'arrive à reproduire, ou assurer le support d'un projet déjà en production.",
+      "Je construis actuellement un site pour un coach sportif. À côté de ça, des missions plus courtes : ajouter une fonctionnalité à une base de code existante, traquer un bug que personne n'arrive à reproduire, ou assurer le support d'un projet déjà en production.",
     "contact.label": "CONTACT",
     "contact.titleLine1": "Parlez-moi de",
     "contact.titleLine2": "votre projet.",
     "contact.description":
-      "Un système à construire, un système à réparer, ou simplement un deuxième avis sur une approche — écrivez-moi quelques lignes et je vous dirai honnêtement si je suis la bonne personne.",
+      "Je suis disponible en freelance, à distance ou sur site. Un système à construire, un système à réparer, ou simplement un deuxième avis sur une approche — écrivez-moi quelques lignes et je vous dirai honnêtement si je suis la bonne personne.",
     "footer.role": "Ingénieur logiciel full-stack",
   },
 } as const;
