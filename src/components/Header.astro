@@ -14,7 +14,7 @@ const navItems = ["work", "expertise", "about", "contact"].map((key) => ({
 <header
   class="site-header top-0 md:scrolled:top-5 fixed left-1/2 -translate-x-1/2 z-10 w-full h-16 rounded-lg flex items-center justify-between px-5 pr-4 border border-border bg-bg/[0.62] backdrop-blur-lg transition-all duration-300 ease-in-out md:scrolled:w-[min(calc(100%-36px),1240px)] md:scrolled:rounded-2xl"
 >
-  <a class="text-xl font-extrabold tracking-heading" href="#top"
+  <a class="text-2xl font-extrabold tracking-heading" href="#top"
     >AG<span class="text-blue">.</span></a
   >
   <nav
@@ -24,7 +24,7 @@ const navItems = ["work", "expertise", "about", "contact"].map((key) => ({
     {
       navItems.map((item) => (
         <a
-          class="text-sm font-semibold text-muted transition duration-200 hover:text-text"
+          class="text-base font-semibold text-muted transition duration-200 hover:text-text"
           href={item.href}
         >
           {t(`nav.${item.key}`)}
@@ -92,7 +92,7 @@ const navItems = ["work", "expertise", "about", "contact"].map((key) => ({
       </svg>
     </button>
     <a
-      class="text-sm font-semibold md:inline-flex hidden text-text hover:text-muted"
+      class="text-base font-semibold md:inline-flex hidden text-text hover:text-muted"
       href={EMAIL_HREF}
     >
       {t("common.letsTalk")}

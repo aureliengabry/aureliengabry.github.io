@@ -12,14 +12,15 @@ const t = useTranslations(lang);
   <SectionIntro index="07" i18nKey="otherWork" />
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
     <article class="glass min-h-72 p-7 rounded-2xl">
-      <div class="flex justify-between">
-        <span class="font-mono text-xs tracking-widest text-blue"
-          >{t("otherWork.card.kicker")}</span
-        >
-        <span class="text-blue text-xl">↗</span>
-      </div>
-      <div
-        class="mt-8 rounded-xl overflow-hidden border border-border aspect-[1200/649]"
+      <span class="font-mono text-xs tracking-widest text-blue"
+        >{t("otherWork.card.kicker")}</span
+      >
+      <a
+        class="group mt-8 block rounded-xl overflow-hidden border border-border aspect-[1200/649]"
+        href={LINKS.azeliaPhotographie}
+        target="_blank"
+        rel="noopener"
+        aria-label={t("otherWork.card.title")}
       >
         <img
           src="/images/projects/azelia-photographie.webp"
@@ -28,13 +29,13 @@ const t = useTranslations(lang);
           height="649"
           loading="lazy"
           decoding="async"
-          class="w-full h-full object-cover"
+          class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
         />
-      </div>
+      </a>
       <h3 class="mt-6 mb-2.5 text-3xl tracking-title">
         {t("otherWork.card.title")}
       </h3>
-      <p class="text-muted text-sm leading-body">
+      <p class="text-muted text-base leading-body">
         {t("otherWork.card.description")}
       </p>
       <TagList i18nKey="otherWork.card.tags" count={3} />
@@ -48,7 +49,7 @@ const t = useTranslations(lang);
 
     <div class="glass flex items-center gap-6 p-8 rounded-2xl" data-reveal>
       <span class="text-blue text-2xl">→</span>
-      <p class="text-muted text-sm">{t("otherWork.note")}</p>
+      <p class="text-muted text-base">{t("otherWork.note")}</p>
     </div>
   </div>
 </section>
