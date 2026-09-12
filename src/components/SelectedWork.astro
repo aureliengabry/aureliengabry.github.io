@@ -9,6 +9,20 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const protocolCount = 6;
+
+// Hand-drawn line icons (same stroke="currentColor" convention as
+// Expertise.astro's cards) — one per detail column, so "the challenge / my
+// role / the tech" reads as three distinct highlights instead of three
+// identical blocks of small text.
+const detailIcons = {
+  // Target — the problem to hit.
+  challenge:
+    '<circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle>',
+  // Person — who did the work.
+  role: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>',
+  // Stacked layers — the tech stack.
+  tech: '<polygon points="12 3 3 8 12 13 21 8 12 3"></polygon><polyline points="3 16 12 21 21 16"></polyline><polyline points="3 12 12 17 21 12"></polyline>',
+};
 ---
 
 <section
@@ -49,27 +63,90 @@ const protocolCount = 6;
 
     <DashboardMockup />
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-8">
-      <div>
-        <DetailLabel i18nKey="selectedWork.details.challengeLabel" />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
+      <div
+        class="glass p-7 rounded-2xl transition duration-300 hover:-translate-y-1"
+        data-reveal
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              set:html={detailIcons.challenge}
+            />
+          </span>
+          <DetailLabel
+            i18nKey="selectedWork.details.challengeLabel"
+            class="mb-0"
+          />
+        </div>
         <p class="text-muted text-base leading-body">
           {t("selectedWork.details.challenge")}
         </p>
       </div>
-      <div>
-        <DetailLabel i18nKey="selectedWork.details.roleLabel" />
+      <div
+        class="glass p-7 rounded-2xl transition duration-300 hover:-translate-y-1"
+        data-reveal
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              set:html={detailIcons.role}
+            />
+          </span>
+          <DetailLabel i18nKey="selectedWork.details.roleLabel" class="mb-0" />
+        </div>
         <p class="text-muted text-base leading-body">
           {t("selectedWork.details.role")}
         </p>
       </div>
-      <div>
-        <DetailLabel i18nKey="selectedWork.details.techLabel" />
-        <TagList i18nKey="selectedWork.details.tags" count={7} />
+      <div
+        class="glass p-7 rounded-2xl transition duration-300 hover:-translate-y-1"
+        data-reveal
+      >
+        <div class="flex items-center gap-3 mb-4">
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              set:html={detailIcons.tech}
+            />
+          </span>
+          <DetailLabel i18nKey="selectedWork.details.techLabel" class="mb-0" />
+        </div>
+        <TagList i18nKey="selectedWork.details.tags" count={7} accent />
       </div>
     </div>
 
     <div class="mt-16 pt-16 border-t border-border">
-      <DetailLabel i18nKey="selectedWork.integration.label" />
+      <DetailLabel
+        i18nKey="selectedWork.integration.label"
+        prefixI18nKey="selectedWork.details.techLabel"
+      />
       <h4
         class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading"
       >

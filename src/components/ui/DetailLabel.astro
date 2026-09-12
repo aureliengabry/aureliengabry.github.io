@@ -3,14 +3,26 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 interface Props {
   i18nKey: string;
+  /** Renders an existing label string (e.g. "TECHNOLOGY") ahead of this one,
+   * so two already-finalized labels can read as one connected line (e.g.
+   * "TECHNOLOGY / ITxPT & TRANSPORT") without duplicating either string. */
+  prefixI18nKey?: string;
+  /** Overrides the default bottom margin for callers that lay the label out
+   * inline (e.g. next to an icon) instead of stacked above a paragraph. */
+  class?: string;
 }
 
-const { i18nKey } = Astro.props;
+const { i18nKey, prefixI18nKey, class: className = "mb-3" } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<p class="detail-label font-mono text-xs tracking-widest text-blue mb-3">
-  {t(i18nKey)}
+<p
+  class:list={[
+    "detail-label font-mono text-sm font-semibold tracking-widest text-blue",
+    className,
+  ]}
+>
+  {prefixI18nKey && <>{t(prefixI18nKey)} / </>}{t(i18nKey)}
 </p>
