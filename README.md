@@ -9,13 +9,13 @@ bun install
 bun run dev
 ```
 
-| Script          | What it does                          |
-| --------------- | -------------------------------------- |
-| `bun run dev`     | Local dev server                       |
-| `bun run build`   | Production build to `dist/`            |
-| `bun run preview` | Serve the production build locally     |
-| `bun run check`   | Type-check (`astro check`)             |
-| `bun run format`  | Format the codebase with Prettier      |
+| Script            | What it does                       |
+| ----------------- | ---------------------------------- |
+| `bun run dev`     | Local dev server                   |
+| `bun run build`   | Production build to `dist/`        |
+| `bun run preview` | Serve the production build locally |
+| `bun run check`   | Type-check (`astro check`)         |
+| `bun run format`  | Format the codebase with Prettier  |
 
 ## Project structure
 
