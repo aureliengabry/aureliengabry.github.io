@@ -16,7 +16,7 @@ export const ui = {
       "Full-stack engineer in Besançon, France, available for freelance. Web apps, APIs, embedded software — currently a transport platform at 1M+ daily validations.",
     "nav.work": "Work",
     "nav.expertise": "Expertise",
-    "nav.about": "About",
+    "nav.education": "Education",
     "nav.contact": "Contact",
     "common.getInTouch": "Get in touch",
     "common.letsTalk": "Let's talk",
@@ -160,23 +160,6 @@ export const ui = {
     "selectedWork.constraints.rows.2.value": "Deliberate about what's kept",
     "selectedWork.constraints.rows.3.label": "UNRELIABLE NETWORK",
     "selectedWork.constraints.rows.3.value": "Works offline first",
-    "about.caption": "FULL-STACK / SYSTEMS",
-    "about.label": "ABOUT",
-    "about.heading": "Software that has to work in the real world.",
-    "about.paragraph1":
-      "I'm Aurélien. I'm a software engineer based in France, and I've spent the last five years building one large system end to end — the web interfaces, the services behind them, and the embedded software running on devices out in the field.",
-    "about.paragraph2":
-      "I like understanding how the whole thing fits together: the business logic, the data, the hardware, and the people relying on it at six in the morning when something has gone wrong.",
-    "about.paragraph3":
-      "Working on something thousands of people depend on daily taught me to care as much about reliability and maintainability as about features. That's the habit I bring to any project.",
-    "about.facts.0.label": "AVAILABILITY",
-    "about.facts.0.value": "Open to freelance",
-    "about.facts.1.label": "BASED IN",
-    "about.facts.1.value": "Besançon, France",
-    "about.facts.2.label": "LANGUAGES",
-    "about.facts.2.value": "French · English",
-    "about.facts.3.label": "DOMAIN",
-    "about.facts.3.value": "Transport · Ticketing",
     "education.label": "EDUCATION",
     "education.heading":
       "A master's degree in embedded systems, then hands-on in the field.",
@@ -230,6 +213,7 @@ export const ui = {
     "contact.titleLine2": "your project.",
     "contact.description":
       "I'm available for freelance work, remote or on-site. Something to build, something to fix, or just a second opinion on an approach — send me a few lines about it and I'll tell you honestly whether I'm the right person for it.",
+    "contact.note": "I'm Aurélien — happy to work in French or English.",
     "footer.role": "Full-Stack Software Engineer",
   },
   fr: {
@@ -238,7 +222,7 @@ export const ui = {
       "Ingénieur full-stack à Besançon, France, disponible en freelance. Applications web, API et logiciels embarqués — transport public : 1M+ validations/jour.",
     "nav.work": "Projets",
     "nav.expertise": "Expertise",
-    "nav.about": "À propos",
+    "nav.education": "Formation",
     "nav.contact": "Contact",
     "common.getInTouch": "Me contacter",
     "common.letsTalk": "Discutons",
@@ -384,23 +368,6 @@ export const ui = {
     "selectedWork.constraints.rows.2.value": "Ce qu'on garde est maîtrisé",
     "selectedWork.constraints.rows.3.label": "RÉSEAU INSTABLE",
     "selectedWork.constraints.rows.3.value": "Fonctionne d'abord hors ligne",
-    "about.caption": "FULL-STACK / SYSTÈMES",
-    "about.label": "À PROPOS",
-    "about.heading": "Un logiciel qui doit fonctionner dans le monde réel.",
-    "about.paragraph1":
-      "Je m'appelle Aurélien. Je suis ingénieur logiciel, basé en France, et j'ai passé les cinq dernières années à construire un grand système de bout en bout — les interfaces web, les services derrière, et le logiciel embarqué qui tourne sur les appareils sur le terrain.",
-    "about.paragraph2":
-      "J'aime comprendre comment l'ensemble tient debout : la logique métier, les données, le matériel, et les gens qui comptent dessus à six heures du matin quand quelque chose ne va pas.",
-    "about.paragraph3":
-      "Travailler sur un système dont des milliers de personnes dépendent chaque jour m'a appris à accorder autant d'importance à la fiabilité et à la maintenabilité qu'aux fonctionnalités. C'est ce que j'apporte sur chaque projet.",
-    "about.facts.0.label": "DISPONIBILITÉ",
-    "about.facts.0.value": "Ouvert au freelance",
-    "about.facts.1.label": "BASÉ À",
-    "about.facts.1.value": "Besançon, France",
-    "about.facts.2.label": "LANGUES",
-    "about.facts.2.value": "Français · Anglais",
-    "about.facts.3.label": "DOMAINE",
-    "about.facts.3.value": "Transport · Billettique",
     "education.label": "FORMATION",
     "education.heading":
       "Un master en systèmes embarqués, puis la pratique sur le terrain.",
@@ -454,6 +421,8 @@ export const ui = {
     "contact.titleLine2": "votre projet.",
     "contact.description":
       "Je suis disponible en freelance, à distance ou sur site. Un système à construire, un système à réparer, ou simplement un deuxième avis sur une approche — écrivez-moi quelques lignes et je vous dirai honnêtement si je suis la bonne personne.",
+    "contact.note":
+      "Je m'appelle Aurélien — à l'aise aussi bien en français qu'en anglais.",
     "footer.role": "Ingénieur logiciel full-stack",
   },
 } as const;

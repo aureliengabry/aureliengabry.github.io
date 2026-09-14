@@ -8,7 +8,7 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const navItems = ["expertise", "work", "about", "contact"].map((key) => ({
+const navItems = ["expertise", "work", "education", "contact"].map((key) => ({
   key,
   href: `#${key}`,
 }));

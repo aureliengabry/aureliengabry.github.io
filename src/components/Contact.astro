@@ -17,7 +17,7 @@ const t = useTranslations(lang);
   >
   </div>
   <div class="relative z-10">
-    <Eyebrow index="06" i18nKey="contact" />
+    <Eyebrow index="05" i18nKey="contact" />
     <h2
       class="max-w-4xl text-[clamp(60px,9vw,120px)] leading-[0.86] tracking-[-0.075em] mb-6"
     >
@@ -25,6 +25,9 @@ const t = useTranslations(lang);
     </h2>
     <p class="max-w-xl text-muted leading-body">
       {t("contact.description")}
+    </p>
+    <p class="max-w-xl text-dim text-sm mt-4">
+      {t("contact.note")}
     </p>
     <CtaButton href={EMAIL_HREF} size="lg" class="mt-5">
       {t("common.getInTouch")}
