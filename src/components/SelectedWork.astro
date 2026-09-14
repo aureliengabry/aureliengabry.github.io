@@ -2,7 +2,11 @@
 import Eyebrow from "./ui/Eyebrow.astro";
 import DetailLabel from "./ui/DetailLabel.astro";
 import TagList from "./ui/TagList.astro";
+import Icon from "./ui/Icon.astro";
 import DashboardMockup from "./visuals/DashboardMockup.astro";
+import targetIcon from "../icons/target.svg?raw";
+import personIcon from "../icons/person.svg?raw";
+import layersIcon from "../icons/layers.svg?raw";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -10,18 +14,13 @@ const t = useTranslations(lang);
 
 const protocolCount = 6;
 
-// Hand-drawn line icons (same stroke="currentColor" convention as
-// Expertise.astro's cards) — one per detail column, so "the challenge / my
-// role / the tech" reads as three distinct highlights instead of three
-// identical blocks of small text.
+// One hand-drawn line icon per detail column, so "the challenge / my role /
+// the tech" reads as three distinct highlights instead of three identical
+// blocks of small text.
 const detailIcons = {
-  // Target — the problem to hit.
-  challenge:
-    '<circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle>',
-  // Person — who did the work.
-  role: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>',
-  // Stacked layers — the tech stack.
-  tech: '<polygon points="12 3 3 8 12 13 21 8 12 3"></polygon><polyline points="3 16 12 21 21 16"></polyline><polyline points="3 12 12 17 21 12"></polyline>',
+  challenge: targetIcon,
+  role: personIcon,
+  tech: layersIcon,
 };
 ---
 
@@ -72,16 +71,7 @@ const detailIcons = {
           <span
             class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
           >
-            <svg
-              class="w-5 h-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              set:html={detailIcons.challenge}
-            />
+            <Icon svg={detailIcons.challenge} class="w-5 h-5" />
           </span>
           <DetailLabel
             i18nKey="selectedWork.details.challengeLabel"
@@ -100,16 +90,7 @@ const detailIcons = {
           <span
             class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
           >
-            <svg
-              class="w-5 h-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              set:html={detailIcons.role}
-            />
+            <Icon svg={detailIcons.role} class="w-5 h-5" />
           </span>
           <DetailLabel i18nKey="selectedWork.details.roleLabel" class="mb-0" />
         </div>
@@ -127,16 +108,7 @@ const detailIcons = {
         <span
           class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
         >
-          <svg
-            class="w-5 h-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            set:html={detailIcons.tech}
-          />
+          <Icon svg={detailIcons.tech} class="w-5 h-5" />
         </span>
         <DetailLabel i18nKey="selectedWork.details.techLabel" class="mb-0" />
       </div>

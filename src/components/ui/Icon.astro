@@ -1,0 +1,20 @@
+---
+// Renders a raw SVG string (imported elsewhere via `?raw`, e.g.
+// `import github from "../../icons/github.svg?raw"`) inline in the page,
+// so it keeps responding to `currentColor`/hover/theme like a hand-written
+// <svg> would — unlike an <img src="...svg">, which can't inherit text
+// color at all. The size classes go on this wrapper and apply to the
+// injected <svg> via an arbitrary child-selector variant, since the raw
+// markup itself has no fixed width/height baked in.
+interface Props {
+  svg: string;
+  class?: string;
+}
+
+const { svg, class: className = "w-5 h-5" } = Astro.props;
+---
+
+<span
+  class:list={["inline-block [&>svg]:w-full [&>svg]:h-full", className]}
+  set:html={svg}
+/>
