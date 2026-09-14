@@ -60,6 +60,23 @@ export const ui = {
     "expertise.cards.2.tags.0": "Linux / ARM",
     "expertise.cards.2.tags.1": "Docker",
     "expertise.cards.2.tags.2": "ITxPT",
+    "expertise.approach.label": "OWNERSHIP",
+    "expertise.approach.heading":
+      "Architecture, client work, integration, and code quality.",
+    "expertise.approach.description":
+      "From the first conversation about what's actually needed, through the technical design, to testing on real hardware and supporting it once it's live.",
+    "expertise.approach.items.0.title": "Architecture",
+    "expertise.approach.items.0.description":
+      "Deciding how the pieces fit — where to split services, what to optimise, and what will still make sense in three years.",
+    "expertise.approach.items.1.title": "Working with clients",
+    "expertise.approach.items.1.description":
+      "Sitting in the technical meetings, asking the questions that surface the real requirement, then shipping it.",
+    "expertise.approach.items.2.title": "Integration",
+    "expertise.approach.items.2.description":
+      "Testing on the actual hardware, on site, until it works in the field — not just on my machine.",
+    "expertise.approach.items.3.title": "Code quality",
+    "expertise.approach.items.3.description":
+      "Reviews, debugging, and the unglamorous maintenance that keeps a system alive for years.",
     "selectedWork.label": "SELECTED WORK",
     "selectedWork.heading": "Five years on one platform, in production daily.",
     "selectedWork.description":
@@ -143,23 +160,6 @@ export const ui = {
     "selectedWork.constraints.rows.2.value": "Deliberate about what's kept",
     "selectedWork.constraints.rows.3.label": "UNRELIABLE NETWORK",
     "selectedWork.constraints.rows.3.value": "Works offline first",
-    "ownership.label": "OWNERSHIP",
-    "ownership.heading":
-      "Architecture, client work, integration, and code quality.",
-    "ownership.description":
-      "From the first conversation about what's actually needed, through the technical design, to testing on real hardware and supporting it once it's live.",
-    "ownership.items.0.title": "Architecture",
-    "ownership.items.0.description":
-      "Deciding how the pieces fit — where to split services, what to optimise, and what will still make sense in three years.",
-    "ownership.items.1.title": "Working with clients",
-    "ownership.items.1.description":
-      "Sitting in the technical meetings, asking the questions that surface the real requirement, then shipping it.",
-    "ownership.items.2.title": "Integration",
-    "ownership.items.2.description":
-      "Testing on the actual hardware, on site, until it works in the field — not just on my machine.",
-    "ownership.items.3.title": "Code quality",
-    "ownership.items.3.description":
-      "Reviews, debugging, and the unglamorous maintenance that keeps a system alive for years.",
     "about.caption": "FULL-STACK / SYSTEMS",
     "about.label": "ABOUT",
     "about.heading": "Software that has to work in the real world.",
@@ -282,6 +282,23 @@ export const ui = {
     "expertise.cards.2.tags.0": "Linux / ARM",
     "expertise.cards.2.tags.1": "Docker",
     "expertise.cards.2.tags.2": "ITxPT",
+    "expertise.approach.label": "IMPLICATION",
+    "expertise.approach.heading":
+      "Architecture, travail client, intégration et qualité du code.",
+    "expertise.approach.description":
+      "De la première discussion sur le besoin réel jusqu'aux tests sur le matériel et au support une fois en production, en passant par la conception technique.",
+    "expertise.approach.items.0.title": "Architecture",
+    "expertise.approach.items.0.description":
+      "Décider comment les briques s'assemblent : où découper, quoi optimiser, et ce qui tiendra encore dans trois ans.",
+    "expertise.approach.items.1.title": "Travail avec le client",
+    "expertise.approach.items.1.description":
+      "Être en réunion technique, poser les questions qui font émerger le vrai besoin, puis le livrer.",
+    "expertise.approach.items.2.title": "Intégration",
+    "expertise.approach.items.2.description":
+      "Tester sur le matériel réel, sur site, jusqu'à ce que ça marche sur le terrain — et pas seulement sur ma machine.",
+    "expertise.approach.items.3.title": "Qualité du code",
+    "expertise.approach.items.3.description":
+      "Les revues, le débogage, et la maintenance ingrate qui garde un système en vie pendant des années.",
     "selectedWork.label": "PROJETS SÉLECTIONNÉS",
     "selectedWork.heading":
       "Cinq ans sur une même plateforme, en production tous les jours.",
@@ -367,23 +384,6 @@ export const ui = {
     "selectedWork.constraints.rows.2.value": "Ce qu'on garde est maîtrisé",
     "selectedWork.constraints.rows.3.label": "RÉSEAU INSTABLE",
     "selectedWork.constraints.rows.3.value": "Fonctionne d'abord hors ligne",
-    "ownership.label": "IMPLICATION",
-    "ownership.heading":
-      "Architecture, travail client, intégration et qualité du code.",
-    "ownership.description":
-      "De la première discussion sur le besoin réel jusqu'aux tests sur le matériel et au support une fois en production, en passant par la conception technique.",
-    "ownership.items.0.title": "Architecture",
-    "ownership.items.0.description":
-      "Décider comment les briques s'assemblent : où découper, quoi optimiser, et ce qui tiendra encore dans trois ans.",
-    "ownership.items.1.title": "Travail avec le client",
-    "ownership.items.1.description":
-      "Être en réunion technique, poser les questions qui font émerger le vrai besoin, puis le livrer.",
-    "ownership.items.2.title": "Intégration",
-    "ownership.items.2.description":
-      "Tester sur le matériel réel, sur site, jusqu'à ce que ça marche sur le terrain — et pas seulement sur ma machine.",
-    "ownership.items.3.title": "Qualité du code",
-    "ownership.items.3.description":
-      "Les revues, le débogage, et la maintenance ingrate qui garde un système en vie pendant des années.",
     "about.caption": "FULL-STACK / SYSTÈMES",
     "about.label": "À PROPOS",
     "about.heading": "Un logiciel qui doit fonctionner dans le monde réel.",
