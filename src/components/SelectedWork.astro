@@ -7,20 +7,23 @@ import DashboardMockup from "./visuals/DashboardMockup.astro";
 import targetIcon from "../icons/target.svg?raw";
 import personIcon from "../icons/person.svg?raw";
 import layersIcon from "../icons/layers.svg?raw";
+import chipIcon from "../icons/chip.svg?raw";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const protocolCount = 6;
+const constraintCount = 4;
 
 // One hand-drawn line icon per detail column, so "the challenge / my role /
-// the tech" reads as three distinct highlights instead of three identical
-// blocks of small text.
+// the tech / the constraints" reads as distinct highlights instead of blocks
+// of identical small text.
 const detailIcons = {
   challenge: targetIcon,
   role: personIcon,
   tech: layersIcon,
+  constraints: chipIcon,
 };
 ---
 
@@ -31,11 +34,11 @@ const detailIcons = {
   <div class="md:grid grid-cols-2 gap-20 items-end max-w-none">
     <div>
       <Eyebrow index="02" i18nKey="selectedWork" />
-      <h2 class="text-h2 leading-heading-tight tracking-heading mb-5">
+      <h2 class="text-h2 leading-heading-tight tracking-heading mb-4">
         {t("selectedWork.heading")}
       </h2>
     </div>
-    <p class="text-muted leading-body-loose self-end">
+    <p class="text-muted leading-body self-end">
       {t("selectedWork.description")}
     </p>
   </div>
@@ -63,10 +66,7 @@ const detailIcons = {
     <DashboardMockup />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
-      <div
-        class="glass p-7 rounded-2xl transition duration-300 hover:-translate-y-1"
-        data-reveal
-      >
+      <div class="glass p-7 rounded-2xl" data-reveal>
         <div class="flex items-center gap-3 mb-4">
           <span
             class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
@@ -140,6 +140,47 @@ const detailIcons = {
             ))
           }
         </div>
+      </div>
+    </div>
+
+    <div
+      class="glass mt-5 p-7 md:p-9 rounded-2xl transition duration-300 hover:-translate-y-1"
+      data-reveal
+    >
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
+        >
+          <Icon svg={detailIcons.constraints} class="w-5 h-5" />
+        </span>
+        <DetailLabel i18nKey="selectedWork.constraints.label" class="mb-0" />
+      </div>
+      <h4
+        class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading"
+      >
+        {t("selectedWork.constraints.heading")}
+      </h4>
+      <p class="max-w-2xl mb-8 text-muted text-base leading-body">
+        {t("selectedWork.constraints.description")}
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 border-t border-border">
+        {
+          Array.from({ length: constraintCount }, (_, i) => (
+            <div
+              class:list={[
+                "flex justify-between gap-8 py-4 border-b border-border",
+                i % 2 === 0 && "sm:pr-8",
+              ]}
+            >
+              <span class="font-mono text-xs text-blue">
+                {t(`selectedWork.constraints.rows.${i}.label`)}
+              </span>
+              <strong class="text-sm font-semibold">
+                {t(`selectedWork.constraints.rows.${i}.value`)}
+              </strong>
+            </div>
+          ))
+        }
       </div>
     </div>
   </article>

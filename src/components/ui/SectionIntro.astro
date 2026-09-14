@@ -13,12 +13,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<div class="max-w-3xl mb-16">
+<div class="max-w-3xl mb-12">
   <Eyebrow index={index} i18nKey={i18nKey} />
-  <h2 class="text-h2 leading-heading-tight tracking-heading mb-5">
+  <h2 class="text-h2 leading-heading-tight tracking-heading mb-4">
     {t(`${i18nKey}.heading`)}
   </h2>
-  <p class="max-w-2xl text-muted text-base leading-body-loose">
+  <p class="max-w-3xl text-muted text-base leading-body">
     {t(`${i18nKey}.description`)}
   </p>
 </div>

@@ -110,18 +110,6 @@ export const ui = {
     "selectedWork.details.tags.4": "React",
     "selectedWork.details.tags.5": "Docker",
     "selectedWork.details.tags.6": "Linux / ARM",
-    "constraints.label": "EMBEDDED ENGINEERING",
-    "constraints.heading": "Built for hardware that can't be upgraded.",
-    "constraints.description":
-      "The devices in the field are small, slow, and sometimes offline for hours. Every decision — how much memory to use, what to store, what to do when the connection drops — has to account for that.",
-    "constraints.rows.0.label": "LOW RAM",
-    "constraints.rows.0.value": "Services that stay small",
-    "constraints.rows.1.label": "LOW CPU",
-    "constraints.rows.1.value": "Work done efficiently",
-    "constraints.rows.2.label": "LIMITED STORAGE",
-    "constraints.rows.2.value": "Deliberate about what's kept",
-    "constraints.rows.3.label": "UNRELIABLE NETWORK",
-    "constraints.rows.3.value": "Works offline first",
     "selectedWork.integration.label": "ITxPT & TRANSPORT",
     "selectedWork.integration.heading":
       "Making equipment from different manufacturers work together.",
@@ -142,8 +130,22 @@ export const ui = {
     "selectedWork.integration.protocols.4.description": "Vehicle positioning",
     "selectedWork.integration.protocols.5.name": "AVMS",
     "selectedWork.integration.protocols.5.description": "Fleet management",
+    "selectedWork.constraints.label": "EMBEDDED ENGINEERING",
+    "selectedWork.constraints.heading":
+      "Built for hardware that can't be upgraded.",
+    "selectedWork.constraints.description":
+      "The devices in the field are small, slow, and sometimes offline for hours. Every decision — how much memory to use, what to store, what to do when the connection drops — has to account for that.",
+    "selectedWork.constraints.rows.0.label": "LOW RAM",
+    "selectedWork.constraints.rows.0.value": "Services that stay small",
+    "selectedWork.constraints.rows.1.label": "LOW CPU",
+    "selectedWork.constraints.rows.1.value": "Work done efficiently",
+    "selectedWork.constraints.rows.2.label": "LIMITED STORAGE",
+    "selectedWork.constraints.rows.2.value": "Deliberate about what's kept",
+    "selectedWork.constraints.rows.3.label": "UNRELIABLE NETWORK",
+    "selectedWork.constraints.rows.3.value": "Works offline first",
     "ownership.label": "OWNERSHIP",
-    "ownership.heading": "I take the problem end to end.",
+    "ownership.heading":
+      "Architecture, client work, integration, and code quality.",
     "ownership.description":
       "From the first conversation about what's actually needed, through the technical design, to testing on real hardware and supporting it once it's live.",
     "ownership.items.0.title": "Architecture",
@@ -176,7 +178,8 @@ export const ui = {
     "about.facts.3.label": "DOMAIN",
     "about.facts.3.value": "Transport · Ticketing",
     "education.label": "EDUCATION",
-    "education.heading": "Where the hardware side comes from.",
+    "education.heading":
+      "A master's degree in embedded systems, then hands-on in the field.",
     "education.description":
       "I trained in embedded systems — software that runs directly on hardware. It's why I'm as comfortable working close to the electronics as I am in the browser.",
     "education.entries.0.date": "SEP 2021",
@@ -330,18 +333,6 @@ export const ui = {
     "selectedWork.details.tags.4": "React",
     "selectedWork.details.tags.5": "Docker",
     "selectedWork.details.tags.6": "Linux / ARM",
-    "constraints.label": "INGÉNIERIE EMBARQUÉE",
-    "constraints.heading": "Conçu pour du matériel qu'on ne peut pas changer.",
-    "constraints.description":
-      "Les appareils sur le terrain sont petits, lents, et parfois hors ligne pendant des heures. Chaque décision — la mémoire utilisée, ce qu'on stocke, quoi faire quand la connexion tombe — doit en tenir compte.",
-    "constraints.rows.0.label": "RAM LIMITÉE",
-    "constraints.rows.0.value": "Des services qui restent légers",
-    "constraints.rows.1.label": "CPU LIMITÉ",
-    "constraints.rows.1.value": "Un traitement efficace",
-    "constraints.rows.2.label": "STOCKAGE LIMITÉ",
-    "constraints.rows.2.value": "Ce qu'on garde est maîtrisé",
-    "constraints.rows.3.label": "RÉSEAU INSTABLE",
-    "constraints.rows.3.value": "Fonctionne d'abord hors ligne",
     "selectedWork.integration.label": "ITxPT & TRANSPORT",
     "selectedWork.integration.heading":
       "Faire dialoguer des équipements de marques différentes.",
@@ -363,8 +354,22 @@ export const ui = {
       "Position des véhicules",
     "selectedWork.integration.protocols.5.name": "AVMS",
     "selectedWork.integration.protocols.5.description": "Gestion de flotte",
+    "selectedWork.constraints.label": "INGÉNIERIE EMBARQUÉE",
+    "selectedWork.constraints.heading":
+      "Conçu pour du matériel qu'on ne peut pas changer.",
+    "selectedWork.constraints.description":
+      "Les appareils sur le terrain sont petits, lents, et parfois hors ligne pendant des heures. Chaque décision — la mémoire utilisée, ce qu'on stocke, quoi faire quand la connexion tombe — doit en tenir compte.",
+    "selectedWork.constraints.rows.0.label": "RAM LIMITÉE",
+    "selectedWork.constraints.rows.0.value": "Des services qui restent légers",
+    "selectedWork.constraints.rows.1.label": "CPU LIMITÉ",
+    "selectedWork.constraints.rows.1.value": "Un traitement efficace",
+    "selectedWork.constraints.rows.2.label": "STOCKAGE LIMITÉ",
+    "selectedWork.constraints.rows.2.value": "Ce qu'on garde est maîtrisé",
+    "selectedWork.constraints.rows.3.label": "RÉSEAU INSTABLE",
+    "selectedWork.constraints.rows.3.value": "Fonctionne d'abord hors ligne",
     "ownership.label": "IMPLICATION",
-    "ownership.heading": "Je prends le problème de bout en bout.",
+    "ownership.heading":
+      "Architecture, travail client, intégration et qualité du code.",
     "ownership.description":
       "De la première discussion sur le besoin réel jusqu'aux tests sur le matériel et au support une fois en production, en passant par la conception technique.",
     "ownership.items.0.title": "Architecture",
@@ -397,7 +402,8 @@ export const ui = {
     "about.facts.3.label": "DOMAINE",
     "about.facts.3.value": "Transport · Billettique",
     "education.label": "FORMATION",
-    "education.heading": "D'où vient le côté matériel.",
+    "education.heading":
+      "Un master en systèmes embarqués, puis la pratique sur le terrain.",
     "education.description":
       "Je me suis formé aux systèmes embarqués — du logiciel qui tourne directement sur du matériel. C'est ce qui me rend aussi à l'aise près de l'électronique que dans le navigateur.",
     "education.entries.0.date": "SEPT. 2021",

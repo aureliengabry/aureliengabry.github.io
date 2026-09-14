@@ -70,7 +70,7 @@
   /* Fluid font sizes repeated identically across files (section h2s, stat
      figures) — named so they read as one shared scale instead of two
      copies of the same clamp() string. */
-  --text-h2: clamp(42px, 5vw, 70px);
+  --text-h2: clamp(36px, 4.4vw, 58px);
   --text-stat: clamp(46px, 5vw, 68px);
 
   /* Line-height steps this design repeats but Tailwind's default scale
