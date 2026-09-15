@@ -6,16 +6,6 @@ const t = useTranslations(lang);
 
 const sidebarCount = 5;
 const metricValues = ["30,000+", "1M+", "99.9%", "50"];
-// One accent per metric: hardware-scale stats (validators, operators) share the
-// blue family, activity/health stats (validations, sync) share the green
-// family — a top-border tint, not a rainbow, so each color still reads as a
-// deliberate category rather than decoration.
-const metricAccents = [
-  "border-t-blue",
-  "border-t-mint",
-  "border-t-green",
-  "border-t-blue-strong",
-];
 const flowCount = 3;
 ---
 
@@ -25,7 +15,7 @@ const flowCount = 3;
   <div
     class="flex items-center gap-2 h-12 px-4 border-b border-border bg-black/[0.12]"
   >
-    <span class="w-2 h-2 rounded-full bg-[#f87171] theme-light:bg-[#dc2626]"
+    <span class="w-2 h-2 rounded-full bg-[#fca5a5] theme-light:bg-[#f87171]"
     ></span>
     <span class="w-2 h-2 rounded-full bg-green"></span>
     <span class="w-2 h-2 rounded-full bg-faint"></span>
@@ -74,21 +64,11 @@ const flowCount = 3;
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-4">
         {
           metricValues.map((value, i) => (
-            <div
-              class:list={[
-                "p-5 rounded-xl border border-t-2 border-border bg-tint",
-                metricAccents[i],
-              ]}
-            >
+            <div class="p-5 rounded-xl border border-border bg-tint">
               <small class="font-mono text-dim text-xs tracking-widest block">
                 {t(`selectedWork.dashboard.metrics.${i}.label`)}
               </small>
-              <strong
-                class:list={[
-                  "block mt-2 text-3xl tracking-tighter",
-                  i === 2 && "text-mint",
-                ]}
-              >
+              <strong class="block mt-2 text-3xl tracking-tighter">
                 {value}
               </strong>
               <span class="text-dim text-xs">
