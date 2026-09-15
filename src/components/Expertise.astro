@@ -29,7 +29,7 @@ const approachItems = [layersIcon, usersIcon, linkIcon, checkCircleIcon];
 ---
 
 <section
-  class="max-w-content mx-auto px-6 py-24 md:py-36 scroll-mt-28"
+  class="relative max-w-content mx-auto px-6 pt-24 pb-20 md:pt-36 md:pb-28 scroll-mt-28"
   id="expertise"
 >
   <SectionIntro index="01" i18nKey="expertise" />
@@ -87,5 +87,12 @@ const approachItems = [layersIcon, usersIcon, linkIcon, checkCircleIcon];
         ))
       }
     </div>
+  </div>
+
+  <!-- Bleeds into the gap below the section, so the transition into Selected
+       Work has an accent to land on instead of reading as flat background. -->
+  <div
+    class="absolute w-[560px] h-[260px] max-w-[85vw] left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 -z-10 bg-[radial-gradient(ellipse,rgba(37,99,235,0.16),transparent_65%)] blur-2xl pointer-events-none"
+  >
   </div>
 </section>
