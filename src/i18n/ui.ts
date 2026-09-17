@@ -16,7 +16,7 @@ export const ui = {
       "Full-stack engineer in Besançon, France, available for freelance. Web apps, APIs, embedded software — currently a transport platform at 1M+ daily validations.",
     "nav.work": "Work",
     "nav.expertise": "Expertise",
-    "nav.about": "About",
+    "nav.education": "Education",
     "nav.contact": "Contact",
     "common.getInTouch": "Get in touch",
     "common.letsTalk": "Let's talk",
@@ -59,13 +59,24 @@ export const ui = {
       "Software that talks to physical equipment — payment terminals, onboard computers, sensors — and keeps working when the network doesn't.",
     "expertise.cards.2.tags.0": "Linux / ARM",
     "expertise.cards.2.tags.1": "Docker",
-    "expertise.cards.2.tags.2": "MQTT",
-    "expertise.cards.2.tags.3": "SNMP",
-    "expertise.cards.2.tags.4": "FTP",
-    "expertise.cards.2.tags.5": "NeTEx",
-    "expertise.cards.2.tags.6": "GNSS",
-    "expertise.cards.2.tags.7": "AVMS",
-    "expertise.cards.2.tags.8": "ITxPT",
+    "expertise.cards.2.tags.2": "ITxPT",
+    "expertise.approach.label": "OWNERSHIP",
+    "expertise.approach.heading":
+      "Architecture, client work, integration, and code quality.",
+    "expertise.approach.description":
+      "From the first conversation about what's actually needed, through the technical design, to testing on real hardware and supporting it once it's live.",
+    "expertise.approach.items.0.title": "Architecture",
+    "expertise.approach.items.0.description":
+      "Deciding how the pieces fit — where to split services, what to optimise, and what will still make sense in three years.",
+    "expertise.approach.items.1.title": "Working with clients",
+    "expertise.approach.items.1.description":
+      "Sitting in the technical meetings, asking the questions that surface the real requirement, then shipping it.",
+    "expertise.approach.items.2.title": "Integration",
+    "expertise.approach.items.2.description":
+      "Testing on the actual hardware, on site, until it works in the field — not just on my machine.",
+    "expertise.approach.items.3.title": "Code quality",
+    "expertise.approach.items.3.description":
+      "Reviews, debugging, and the unglamorous maintenance that keeps a system alive for years.",
     "selectedWork.label": "SELECTED WORK",
     "selectedWork.heading": "Five years on one platform, in production daily.",
     "selectedWork.description":
@@ -116,18 +127,6 @@ export const ui = {
     "selectedWork.details.tags.4": "React",
     "selectedWork.details.tags.5": "Docker",
     "selectedWork.details.tags.6": "Linux / ARM",
-    "constraints.label": "EMBEDDED ENGINEERING",
-    "constraints.heading": "Built for hardware that can't be upgraded.",
-    "constraints.description":
-      "The devices in the field are small, slow, and sometimes offline for hours. Every decision — how much memory to use, what to store, what to do when the connection drops — has to account for that.",
-    "constraints.rows.0.label": "LOW RAM",
-    "constraints.rows.0.value": "Services that stay small",
-    "constraints.rows.1.label": "LOW CPU",
-    "constraints.rows.1.value": "Work done efficiently",
-    "constraints.rows.2.label": "LIMITED STORAGE",
-    "constraints.rows.2.value": "Deliberate about what's kept",
-    "constraints.rows.3.label": "UNRELIABLE NETWORK",
-    "constraints.rows.3.value": "Works offline first",
     "selectedWork.integration.label": "ITxPT & TRANSPORT",
     "selectedWork.integration.heading":
       "Making equipment from different manufacturers work together.",
@@ -148,41 +147,22 @@ export const ui = {
     "selectedWork.integration.protocols.4.description": "Vehicle positioning",
     "selectedWork.integration.protocols.5.name": "AVMS",
     "selectedWork.integration.protocols.5.description": "Fleet management",
-    "ownership.label": "OWNERSHIP",
-    "ownership.heading": "I take the problem end to end.",
-    "ownership.description":
-      "From the first conversation about what's actually needed, through the technical design, to testing on real hardware and supporting it once it's live.",
-    "ownership.items.0.title": "Architecture",
-    "ownership.items.0.description":
-      "Deciding how the pieces fit — where to split services, what to optimise, and what will still make sense in three years.",
-    "ownership.items.1.title": "Working with clients",
-    "ownership.items.1.description":
-      "Sitting in the technical meetings, asking the questions that surface the real requirement, then shipping it.",
-    "ownership.items.2.title": "Integration",
-    "ownership.items.2.description":
-      "Testing on the actual hardware, on site, until it works in the field — not just on my machine.",
-    "ownership.items.3.title": "Code quality",
-    "ownership.items.3.description":
-      "Reviews, debugging, and the unglamorous maintenance that keeps a system alive for years.",
-    "about.caption": "FULL-STACK / SYSTEMS",
-    "about.label": "ABOUT",
-    "about.heading": "Software that has to work in the real world.",
-    "about.paragraph1":
-      "I'm Aurélien. I'm a software engineer based in France, and I've spent the last five years building one large system end to end — the web interfaces, the services behind them, and the embedded software running on devices out in the field.",
-    "about.paragraph2":
-      "I like understanding how the whole thing fits together: the business logic, the data, the hardware, and the people relying on it at six in the morning when something has gone wrong.",
-    "about.paragraph3":
-      "Working on something thousands of people depend on daily taught me to care as much about reliability and maintainability as about features. That's the habit I bring to any project.",
-    "about.facts.0.label": "AVAILABILITY",
-    "about.facts.0.value": "Open to freelance",
-    "about.facts.1.label": "BASED IN",
-    "about.facts.1.value": "Besançon, France",
-    "about.facts.2.label": "LANGUAGES",
-    "about.facts.2.value": "French · English",
-    "about.facts.3.label": "DOMAIN",
-    "about.facts.3.value": "Transport · Ticketing",
+    "selectedWork.constraints.label": "EMBEDDED ENGINEERING",
+    "selectedWork.constraints.heading":
+      "Built for hardware that can't be upgraded.",
+    "selectedWork.constraints.description":
+      "The devices in the field are small, slow, and sometimes offline for hours. Every decision — how much memory to use, what to store, what to do when the connection drops — has to account for that.",
+    "selectedWork.constraints.rows.0.label": "LOW RAM",
+    "selectedWork.constraints.rows.0.value": "Services that stay small",
+    "selectedWork.constraints.rows.1.label": "LOW CPU",
+    "selectedWork.constraints.rows.1.value": "Work done efficiently",
+    "selectedWork.constraints.rows.2.label": "LIMITED STORAGE",
+    "selectedWork.constraints.rows.2.value": "Deliberate about what's kept",
+    "selectedWork.constraints.rows.3.label": "UNRELIABLE NETWORK",
+    "selectedWork.constraints.rows.3.value": "Works offline first",
     "education.label": "EDUCATION",
-    "education.heading": "Where the hardware side comes from.",
+    "education.heading":
+      "A master's degree in embedded systems, then hands-on in the field.",
     "education.description":
       "I trained in embedded systems — software that runs directly on hardware. It's why I'm as comfortable working close to the electronics as I am in the browser.",
     "education.entries.0.date": "SEP 2021",
@@ -233,6 +213,7 @@ export const ui = {
     "contact.titleLine2": "your project.",
     "contact.description":
       "I'm available for freelance work, remote or on-site. Something to build, something to fix, or just a second opinion on an approach — send me a few lines about it and I'll tell you honestly whether I'm the right person for it.",
+    "contact.note": "I'm Aurélien — happy to work in French or English.",
     "footer.role": "Full-Stack Software Engineer",
   },
   fr: {
@@ -241,7 +222,7 @@ export const ui = {
       "Ingénieur full-stack à Besançon, France, disponible en freelance. Applications web, API et logiciels embarqués — transport public : 1M+ validations/jour.",
     "nav.work": "Projets",
     "nav.expertise": "Expertise",
-    "nav.about": "À propos",
+    "nav.education": "Formation",
     "nav.contact": "Contact",
     "common.getInTouch": "Me contacter",
     "common.letsTalk": "Discutons",
@@ -284,13 +265,24 @@ export const ui = {
       "Des logiciels qui dialoguent avec du matériel réel — terminaux de paiement, calculateurs embarqués, capteurs — et qui continuent de fonctionner quand le réseau tombe.",
     "expertise.cards.2.tags.0": "Linux / ARM",
     "expertise.cards.2.tags.1": "Docker",
-    "expertise.cards.2.tags.2": "MQTT",
-    "expertise.cards.2.tags.3": "SNMP",
-    "expertise.cards.2.tags.4": "FTP",
-    "expertise.cards.2.tags.5": "NeTEx",
-    "expertise.cards.2.tags.6": "GNSS",
-    "expertise.cards.2.tags.7": "AVMS",
-    "expertise.cards.2.tags.8": "ITxPT",
+    "expertise.cards.2.tags.2": "ITxPT",
+    "expertise.approach.label": "IMPLICATION",
+    "expertise.approach.heading":
+      "Architecture, travail client, intégration et qualité du code.",
+    "expertise.approach.description":
+      "De la première discussion sur le besoin réel jusqu'aux tests sur le matériel et au support une fois en production, en passant par la conception technique.",
+    "expertise.approach.items.0.title": "Architecture",
+    "expertise.approach.items.0.description":
+      "Décider comment les briques s'assemblent : où découper, quoi optimiser, et ce qui tiendra encore dans trois ans.",
+    "expertise.approach.items.1.title": "Travail avec le client",
+    "expertise.approach.items.1.description":
+      "Être en réunion technique, poser les questions qui font émerger le vrai besoin, puis le livrer.",
+    "expertise.approach.items.2.title": "Intégration",
+    "expertise.approach.items.2.description":
+      "Tester sur le matériel réel, sur site, jusqu'à ce que ça marche sur le terrain — et pas seulement sur ma machine.",
+    "expertise.approach.items.3.title": "Qualité du code",
+    "expertise.approach.items.3.description":
+      "Les revues, le débogage, et la maintenance ingrate qui garde un système en vie pendant des années.",
     "selectedWork.label": "PROJETS SÉLECTIONNÉS",
     "selectedWork.heading":
       "Cinq ans sur une même plateforme, en production tous les jours.",
@@ -342,18 +334,6 @@ export const ui = {
     "selectedWork.details.tags.4": "React",
     "selectedWork.details.tags.5": "Docker",
     "selectedWork.details.tags.6": "Linux / ARM",
-    "constraints.label": "INGÉNIERIE EMBARQUÉE",
-    "constraints.heading": "Conçu pour du matériel qu'on ne peut pas changer.",
-    "constraints.description":
-      "Les appareils sur le terrain sont petits, lents, et parfois hors ligne pendant des heures. Chaque décision — la mémoire utilisée, ce qu'on stocke, quoi faire quand la connexion tombe — doit en tenir compte.",
-    "constraints.rows.0.label": "RAM LIMITÉE",
-    "constraints.rows.0.value": "Des services qui restent légers",
-    "constraints.rows.1.label": "CPU LIMITÉ",
-    "constraints.rows.1.value": "Un traitement efficace",
-    "constraints.rows.2.label": "STOCKAGE LIMITÉ",
-    "constraints.rows.2.value": "Ce qu'on garde est maîtrisé",
-    "constraints.rows.3.label": "RÉSEAU INSTABLE",
-    "constraints.rows.3.value": "Fonctionne d'abord hors ligne",
     "selectedWork.integration.label": "ITxPT & TRANSPORT",
     "selectedWork.integration.heading":
       "Faire dialoguer des équipements de marques différentes.",
@@ -375,41 +355,22 @@ export const ui = {
       "Position des véhicules",
     "selectedWork.integration.protocols.5.name": "AVMS",
     "selectedWork.integration.protocols.5.description": "Gestion de flotte",
-    "ownership.label": "IMPLICATION",
-    "ownership.heading": "Je prends le problème de bout en bout.",
-    "ownership.description":
-      "De la première discussion sur le besoin réel jusqu'aux tests sur le matériel et au support une fois en production, en passant par la conception technique.",
-    "ownership.items.0.title": "Architecture",
-    "ownership.items.0.description":
-      "Décider comment les briques s'assemblent : où découper, quoi optimiser, et ce qui tiendra encore dans trois ans.",
-    "ownership.items.1.title": "Travail avec le client",
-    "ownership.items.1.description":
-      "Être en réunion technique, poser les questions qui font émerger le vrai besoin, puis le livrer.",
-    "ownership.items.2.title": "Intégration",
-    "ownership.items.2.description":
-      "Tester sur le matériel réel, sur site, jusqu'à ce que ça marche sur le terrain — et pas seulement sur ma machine.",
-    "ownership.items.3.title": "Qualité du code",
-    "ownership.items.3.description":
-      "Les revues, le débogage, et la maintenance ingrate qui garde un système en vie pendant des années.",
-    "about.caption": "FULL-STACK / SYSTÈMES",
-    "about.label": "À PROPOS",
-    "about.heading": "Un logiciel qui doit fonctionner dans le monde réel.",
-    "about.paragraph1":
-      "Je m'appelle Aurélien. Je suis ingénieur logiciel, basé en France, et j'ai passé les cinq dernières années à construire un grand système de bout en bout — les interfaces web, les services derrière, et le logiciel embarqué qui tourne sur les appareils sur le terrain.",
-    "about.paragraph2":
-      "J'aime comprendre comment l'ensemble tient debout : la logique métier, les données, le matériel, et les gens qui comptent dessus à six heures du matin quand quelque chose ne va pas.",
-    "about.paragraph3":
-      "Travailler sur un système dont des milliers de personnes dépendent chaque jour m'a appris à accorder autant d'importance à la fiabilité et à la maintenabilité qu'aux fonctionnalités. C'est ce que j'apporte sur chaque projet.",
-    "about.facts.0.label": "DISPONIBILITÉ",
-    "about.facts.0.value": "Ouvert au freelance",
-    "about.facts.1.label": "BASÉ À",
-    "about.facts.1.value": "Besançon, France",
-    "about.facts.2.label": "LANGUES",
-    "about.facts.2.value": "Français · Anglais",
-    "about.facts.3.label": "DOMAINE",
-    "about.facts.3.value": "Transport · Billettique",
+    "selectedWork.constraints.label": "INGÉNIERIE EMBARQUÉE",
+    "selectedWork.constraints.heading":
+      "Conçu pour du matériel qu'on ne peut pas changer.",
+    "selectedWork.constraints.description":
+      "Les appareils sur le terrain sont petits, lents, et parfois hors ligne pendant des heures. Chaque décision — la mémoire utilisée, ce qu'on stocke, quoi faire quand la connexion tombe — doit en tenir compte.",
+    "selectedWork.constraints.rows.0.label": "RAM LIMITÉE",
+    "selectedWork.constraints.rows.0.value": "Des services qui restent légers",
+    "selectedWork.constraints.rows.1.label": "CPU LIMITÉ",
+    "selectedWork.constraints.rows.1.value": "Un traitement efficace",
+    "selectedWork.constraints.rows.2.label": "STOCKAGE LIMITÉ",
+    "selectedWork.constraints.rows.2.value": "Ce qu'on garde est maîtrisé",
+    "selectedWork.constraints.rows.3.label": "RÉSEAU INSTABLE",
+    "selectedWork.constraints.rows.3.value": "Fonctionne d'abord hors ligne",
     "education.label": "FORMATION",
-    "education.heading": "D'où vient le côté matériel.",
+    "education.heading":
+      "Un master en systèmes embarqués, puis la pratique sur le terrain.",
     "education.description":
       "Je me suis formé aux systèmes embarqués — du logiciel qui tourne directement sur du matériel. C'est ce qui me rend aussi à l'aise près de l'électronique que dans le navigateur.",
     "education.entries.0.date": "SEPT. 2021",
@@ -460,6 +421,8 @@ export const ui = {
     "contact.titleLine2": "votre projet.",
     "contact.description":
       "Je suis disponible en freelance, à distance ou sur site. Un système à construire, un système à réparer, ou simplement un deuxième avis sur une approche — écrivez-moi quelques lignes et je vous dirai honnêtement si je suis la bonne personne.",
+    "contact.note":
+      "Je m'appelle Aurélien — à l'aise aussi bien en français qu'en anglais.",
     "footer.role": "Ingénieur logiciel full-stack",
   },
 } as const;

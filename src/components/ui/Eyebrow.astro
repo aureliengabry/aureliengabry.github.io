@@ -12,6 +12,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<p class="eyebrow font-mono text-xs tracking-eyebrow text-blue mb-6">
+<p
+  class="eyebrow font-mono text-lg font-semibold tracking-eyebrow text-blue mb-6"
+>
   {index} / {t(`${i18nKey}.label`)}
 </p>

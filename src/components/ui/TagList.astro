@@ -4,9 +4,13 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 interface Props {
   i18nKey: string;
   count: number;
+  /** Renders every tag in the site's accent blue instead of the neutral tag
+   * color — used on Expertise's cards so the technologies read as a
+   * highlight rather than blending into the rest of the card. */
+  accent?: boolean;
 }
 
-const { i18nKey, count } = Astro.props;
+const { i18nKey, count, accent = false } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -16,7 +20,14 @@ const tags = Array.from({ length: count }, (_, i) => t(`${i18nKey}.${i}`));
 <div class="flex flex-wrap gap-2">
   {
     tags.map((tag) => (
-      <span class="rounded-md border border-border px-2 py-1.5 font-mono text-xs text-tag bg-tint">
+      <span
+        class:list={[
+          "rounded-md border px-2 py-1.5 font-mono text-xs",
+          accent
+            ? "border-blue/30 bg-blue/10 text-blue font-semibold"
+            : "border-border bg-tint text-tag",
+        ]}
+      >
         {tag}
       </span>
     ))

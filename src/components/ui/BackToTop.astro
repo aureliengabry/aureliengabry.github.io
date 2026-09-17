@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+import backToTopIcon from "../../icons/back-to-top.svg?raw";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -10,17 +12,7 @@ const t = useTranslations(lang);
   class="back-to-top fixed bottom-6 right-6 z-10 inline-flex w-16 h-16 items-center justify-center rounded-full border border-border bg-raise text-text opacity-0 pointer-events-none shadow-raised transition duration-300 hover:-translate-y-0.5 hover:border-border-strong back-top-visible:opacity-100 back-top-visible:pointer-events-auto"
   aria-label={t("common.backToTop")}
 >
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    class="w-6 h-6"
-  >
-    <path d="M12 19V5M5 12l7-7 7 7"></path>
-  </svg>
+  <Icon svg={backToTopIcon} class="w-6 h-6" />
 </button>
 
 <script>

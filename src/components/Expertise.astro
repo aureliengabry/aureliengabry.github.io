@@ -1,43 +1,98 @@
 ---
 import SectionIntro from "./ui/SectionIntro.astro";
+import DetailLabel from "./ui/DetailLabel.astro";
 import TagList from "./ui/TagList.astro";
+import Icon from "./ui/Icon.astro";
+import databaseIcon from "../icons/database.svg?raw";
+import browserIcon from "../icons/browser.svg?raw";
+import chipIcon from "../icons/chip.svg?raw";
+import layersIcon from "../icons/layers.svg?raw";
+import usersIcon from "../icons/users.svg?raw";
+import linkIcon from "../icons/link.svg?raw";
+import checkCircleIcon from "../icons/check-circle.svg?raw";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+// One hand-drawn line icon per card, so each type of work reads at a glance
+// instead of as an undifferentiated numbered list.
 const cards = [
-  { key: "expertise.cards.0", tagCount: 4 },
-  { key: "expertise.cards.1", tagCount: 4 },
-  { key: "expertise.cards.2", tagCount: 9 },
+  { key: "expertise.cards.0", tagCount: 4, icon: databaseIcon },
+  { key: "expertise.cards.1", tagCount: 4, icon: browserIcon },
+  { key: "expertise.cards.2", tagCount: 3, icon: chipIcon },
 ];
+
+// What I build (the cards above) is a different axis from how I work — so
+// this reads as a distinct, denser sub-block rather than a fourth card.
+const approachItems = [layersIcon, usersIcon, linkIcon, checkCircleIcon];
 ---
 
 <section
-  class="max-w-content mx-auto px-6 py-24 md:py-36 scroll-mt-28"
+  class="relative max-w-content mx-auto px-6 pt-24 pb-20 md:pt-36 md:pb-28 scroll-mt-28"
   id="expertise"
 >
   <SectionIntro index="01" i18nKey="expertise" />
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
     {
-      cards.map((card, i) => (
+      cards.map((card) => (
         <article
-          class="glass min-h-96 md:min-h-auto p-8 rounded-card transition duration-300 hover:-translate-y-1.5"
+          class="glass min-h-96 md:min-h-auto p-8 rounded-card"
           data-reveal
         >
-          <span class="font-mono text-xs text-blue">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <h3 class="mt-24 md:mt-14 text-2xl tracking-subheading">
+          <div class="flex justify-center">
+            <span class="inline-flex items-center justify-center w-14 h-14 rounded-lg border border-border bg-tint text-blue">
+              <Icon svg={card.icon} class="w-7 h-7" />
+            </span>
+          </div>
+          <h3 class="mt-8 text-2xl tracking-subheading">
             {t(`${card.key}.title`)}
           </h3>
-          <p class="text-muted text-sm leading-body">
+          <p class="text-muted text-base leading-body">
             {t(`${card.key}.description`)}
           </p>
-          <TagList i18nKey={`${card.key}.tags`} count={card.tagCount} />
+          <TagList i18nKey={`${card.key}.tags`} count={card.tagCount} accent />
         </article>
       ))
     }
+  </div>
+
+  <div class="glass mt-3.5 p-7 md:p-9 rounded-2xl" data-reveal>
+    <DetailLabel i18nKey="expertise.approach.label" />
+    <h3
+      class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading"
+    >
+      {t("expertise.approach.heading")}
+    </h3>
+    <p class="max-w-2xl mb-8 text-muted text-base leading-body">
+      {t("expertise.approach.description")}
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5">
+      {
+        approachItems.map((icon, i) => (
+          <div class="p-5 rounded-xl border border-border">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0">
+                <Icon svg={icon} class="w-5 h-5" />
+              </span>
+              <h4 class="text-base font-semibold">
+                {t(`expertise.approach.items.${i}.title`)}
+              </h4>
+            </div>
+            <p class="text-muted text-sm leading-body">
+              {t(`expertise.approach.items.${i}.description`)}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Bleeds into the gap below the section, so the transition into Selected
+       Work has an accent to land on instead of reading as flat background. -->
+  <div
+    class="absolute w-[560px] h-[260px] max-w-[85vw] left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 -z-10 bg-[radial-gradient(ellipse,rgba(37,99,235,0.16),transparent_65%)] blur-2xl pointer-events-none"
+  >
   </div>
 </section>
