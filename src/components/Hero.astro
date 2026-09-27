@@ -2,7 +2,6 @@
 import CtaButton from "./ui/CtaButton.astro";
 import PulsingDot from "./ui/PulsingDot.astro";
 import Icon from "./ui/Icon.astro";
-import CodeWindow from "./visuals/CodeWindow.astro";
 import chevronsDownIcon from "../icons/chevrons-down.svg?raw";
 import { EMAIL_HREF } from "../data/contact";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
@@ -73,14 +72,12 @@ const actions = [
         >Docker</span
       >
     </div>
-  </div>J'interviens à chaque étape d'un produit, de la conception au déploiement : de l'interface utilisée au quotidien au backend qui traite les données.
-
-  <!-- <CodeWindow /> -->
+  </div>
 
   <a
     href="#expertise"
     aria-label={t("hero.scrollHint")}
-    class="hidden md:inline-flex absolute bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 items-center justify-center rounded-full border border-border text-muted transition duration-200 hover:text-text hover:border-border-strong animate-bounce"
+    class="hidden md:inline-flex absolute bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 items-center justify-center rounded-full border border-border text-muted transition duration-200 hover:text-text hover:border-border-strong motion-safe:animate-bounce"
   >
     <Icon svg={chevronsDownIcon} class="w-7 h-7" />
   </a>

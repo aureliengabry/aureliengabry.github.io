@@ -16,9 +16,7 @@ const t = useTranslations(lang);
 const constraintCount = 4;
 const integrationItemCount = 4;
 
-// One hand-drawn line icon per detail column, so "the challenge / my role /
-// the tech / the constraints" reads as distinct highlights instead of blocks
-// of identical small text.
+// One icon per detail column so each reads as a distinct highlight.
 const detailIcons = {
   challenge: targetIcon,
   role: personIcon,
@@ -26,11 +24,8 @@ const detailIcons = {
   constraints: chipIcon,
 };
 
-// Quick visual for the architecture items: three components it's built
-// from, connected in reading order, each tied to the physical unit it runs
-// on (bus AVL / onboard unit / validator) so the layers map to real
-// hardware instead of staying abstract. Tags kept to the exact facts named
-// in those items (no re-listing the whole project stack here).
+// The three components the architecture is built from, in reading order,
+// each tied to its physical unit.
 const architectureNodes = [
   {
     icon: targetIcon,
@@ -88,14 +83,8 @@ const architectureNodes = [
       </h3>
     </div>
 
-    <!-- Beat: at-a-glance — challenge and role, side by side. No card
-         border/fill; a single divide-x rule between the two columns (same
-         device as the approach items in Expertise.astro) instead of two
-         more glass tiles. Titles match that same section's plain bold h4
-         instead of the blue mono DetailLabel, for the same reason.
-         Placed before the dashboard mockup (not after) so the reader has
-         the context — what the challenge is, what I actually did — before
-         looking at a screen full of numbers with nothing to anchor them. -->
+    <!-- Placed before the dashboard so the reader has context (the
+         challenge, the role) before a screen full of numbers. -->
     <div
       class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-7 md:gap-x-0 md:divide-x md:divide-border"
     >
@@ -131,11 +120,7 @@ const architectureNodes = [
       </div>
     </div>
 
-    <!-- The dashboard mockup is hidden below md (DashboardMockup.astro is
-         `hidden md:block`), so its intro line is wrapped the same way —
-         otherwise mobile would read a line introducing a table that never
-         actually shows up. The dashboard now has context to land on (the
-         challenge and role above it), so a one-line intro is enough. -->
+    <!-- Hidden below md to match DashboardMockup, which is hidden md:block too. -->
     <div class="hidden md:block md:mt-16">
       <p class="text-muted text-base md:text-lg leading-body">
         {t("selectedWork.dashboardIntro")}
@@ -145,12 +130,8 @@ const architectureNodes = [
       </div>
     </div>
 
-    <!-- Beat: technologies — architecture, protocols and stack broken into
-         short labelled items instead of one dense paragraph, so each part
-         of the stack (backend, messaging, fleet/AVL, standard) is scannable
-         on its own. Text on the left, the diagram stacked vertically on the
-         right (mirrors the constraints beat below), so the schema reads as
-         a companion to the items, not a separate full-width block. -->
+    <!-- Short labelled items instead of one dense paragraph, so each part
+         of the stack is scannable on its own. -->
     <div class="mt-10 md:mt-16 pt-10 border-t border-border">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         <div>
@@ -187,13 +168,8 @@ const architectureNodes = [
           </div>
         </div>
 
-        <!-- Quick visual read of the items on the left: three parts
-             it's built from, top to bottom, plus the standard that ties
-             them together. The outer div is just a centering wrapper for
-             the grid cell; the bordered panel is a separate inner div
-             sized to the diagram's own content (w-fit) instead of
-             stretching to the full column width, so the frame hugs the
-             graph instead of leaving a lot of empty border on each side. -->
+        <!-- Panel sized to its own content (w-fit), not the full column,
+             so the frame hugs the diagram instead of the empty column width. -->
         <div class="flex justify-center">
           <div class="glass rounded-2xl p-4 md:p-5 w-fit">
             <div class="flex items-center justify-center gap-2 mb-5">
@@ -243,9 +219,7 @@ const architectureNodes = [
       </div>
     </div>
 
-    <!-- Beat: constraints — text on the left, the four limits as a plain
-         label/value table on the right (divide-y only, no outer card) so
-         the page isn't just the same border-and-rounded-tile repeated. -->
+    <!-- Plain label/value table, no outer card, for rhythm variety. -->
     <div class="mt-10 md:mt-16 pt-10 border-t border-border">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         <div>
@@ -288,10 +262,7 @@ const architectureNodes = [
       </div>
     </div>
 
-    <!-- Beat: also at Arrive — other projects running alongside this one.
-         Given the same visual weight as the beats above it (icon badge +
-         label + full-size paragraph), not a small dim aside, so it doesn't
-         get missed. -->
+    <!-- Same visual weight as the beats above, not a small dim aside. -->
     <div class="mt-10 md:mt-16 pt-10 border-t border-border">
       <div class="flex items-center gap-3 mb-4">
         <span

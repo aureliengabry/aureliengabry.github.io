@@ -15,16 +15,14 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// One hand-drawn line icon per card, so each type of work reads at a glance
-// instead of as an undifferentiated numbered list.
+// One icon per card so each type of work reads at a glance.
 const cards = [
   { key: "expertise.cards.0", tagCount: 4, icon: databaseIcon },
   { key: "expertise.cards.1", tagCount: 5, icon: browserIcon },
   { key: "expertise.cards.2", tagCount: 3, icon: chipIcon },
 ];
 
-// What I build (the cards above) is a different axis from how I work — so
-// this reads as a distinct, denser sub-block rather than a fourth card.
+// A distinct sub-block ("how I work") rather than a fourth card.
 const approachItems = [usersIcon, layersIcon, linkIcon, checkCircleIcon];
 ---
 
@@ -68,10 +66,7 @@ const approachItems = [usersIcon, layersIcon, linkIcon, checkCircleIcon];
     <p class="max-w-2xl mb-8 text-muted text-base md:text-lg leading-body">
       {t("expertise.approach.description")}
     </p>
-    <!-- No card here, no border/rounded box per item either — a plain
-         border-t divider above is enough to break from the cards grid, so
-         this doesn't repeat the same glass/bordered-tile look on every
-         block. Generous gap spacing does the separating between items. -->
+    <!-- No card per item — gap spacing does the separating instead. -->
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-7 md:gap-x-0 md:divide-x md:divide-border"
     >

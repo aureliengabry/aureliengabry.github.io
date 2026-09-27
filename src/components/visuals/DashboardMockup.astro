@@ -1,104 +1,145 @@
 ---
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import Icon from "../ui/Icon.astro";
+import browserIcon from "../../icons/browser.svg?raw";
+import usersIcon from "../../icons/users.svg?raw";
+import chipIcon from "../../icons/chip.svg?raw";
+import linkIcon from "../../icons/link.svg?raw";
+import checkCircleIcon from "../../icons/check-circle.svg?raw";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const sidebarCount = 5;
-const metricValues = ["30,000+", "1M+", "99.9%", "50"];
+const sidebarIcons = [browserIcon, usersIcon, chipIcon, linkIcon, checkCircleIcon];
+const sidebarCount = sidebarIcons.length;
+
+const metricValues = ["1M+", "30,000+", "11,000+", "50+"];
+// One accent color per metric so the row reads as four distinct signals
+// instead of four identical gray tiles.
+const metricAccentBorder = [
+  "border-l-blue",
+  "border-l-mint",
+  "border-l-green",
+  "border-l-blue-strong",
+];
+
 const flowCount = 3;
+const flowAccentText = ["text-blue", "text-mint", "text-blue-strong"];
+const flowAccentBorder = [
+  "border-t-blue",
+  "border-t-mint",
+  "border-t-blue-strong",
+];
 ---
 
-<div
-  class="hidden md:block group overflow-hidden rounded-3xl min-h-[560px] glass"
->
+<div class="relative hidden md:block">
   <div
-    class="flex items-center gap-2 h-12 px-4 border-b border-border bg-black/[0.12]"
+    class="absolute -inset-10 -z-10 bg-[radial-gradient(ellipse,rgba(37,99,235,0.14),transparent_65%)] blur-2xl pointer-events-none"
+    aria-hidden="true"
   >
-    <span class="w-2 h-2 rounded-full bg-[#fca5a5] theme-light:bg-[#f87171]"
-    ></span>
-    <span class="w-2 h-2 rounded-full bg-green"></span>
-    <span class="w-2 h-2 rounded-full bg-faint"></span>
-    <code class="text-dim font-mono text-xs ml-4"
-      >onboard-system / production</code
-    >
   </div>
-  <div class="grid grid-cols-[160px_1fr] min-h-[510px]">
-    <aside class="hidden md:block border-r border-border p-4">
-      <div
-        class="w-8 h-8 grid place-items-center border border-border rounded-lg font-extrabold text-xs mb-8"
+  <div class="group overflow-hidden rounded-3xl min-h-[560px] glass">
+    <div
+      class="flex items-center gap-2 h-12 px-4 border-b border-border bg-black/[0.12]"
+    >
+      <span class="w-2 h-2 rounded-full bg-[#fca5a5] theme-light:bg-[#f87171]"
+      ></span>
+      <span class="w-2 h-2 rounded-full bg-[#fcd34d] theme-light:bg-[#fbbf24]"
+      ></span>
+      <span class="w-2 h-2 rounded-full bg-green"></span>
+      <code class="text-dim font-mono text-xs ml-4"
+        >onboard-system / production</code
       >
-        AG
-      </div>
-      {
-        Array.from({ length: sidebarCount }, (_, i) => (
-          <div
-            class:list={[
-              "p-2.5 mb-1 text-dim text-xs rounded-md",
-              i === 0 && "bg-blue/[0.08] text-text",
-            ]}
-          >
-            {t(`selectedWork.dashboard.sidebar.${i}`)}
-          </div>
-        ))
-      }
-    </aside>
-    <div class="p-8 bg-tint">
-      <div class="flex justify-between items-end pb-7 border-b border-border">
-        <div>
-          <small class="font-mono text-xs tracking-widest text-dim block">
-            {t("selectedWork.dashboard.networkLabel")}
-          </small>
-          <strong class="block mt-1 text-xl"
-            >{t("selectedWork.dashboard.networkTitle")}</strong
-          >
-        </div>
-        <span
-          class="border border-green/[0.16] rounded-full px-2.5 py-2 text-mint font-mono text-xs"
+    </div>
+    <div class="grid grid-cols-[160px_1fr] min-h-[510px]">
+      <aside class="hidden md:block border-r border-border p-4">
+        <div
+          class="w-8 h-8 grid place-items-center border border-border rounded-lg font-extrabold text-xs mb-8"
         >
-          <i class="inline-block w-1.5 h-1.5 rounded-full bg-green mr-1"></i>{
-            t("selectedWork.dashboard.status")
-          }
-        </span>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-4">
+          AG
+        </div>
         {
-          metricValues.map((value, i) => (
-            <div class="p-5 rounded-xl border border-border bg-tint">
-              <small class="font-mono text-dim text-xs tracking-widest block">
-                {t(`selectedWork.dashboard.metrics.${i}.label`)}
-              </small>
-              <strong class="block mt-2 text-3xl tracking-tighter">
-                {value}
-              </strong>
-              <span class="text-dim text-xs">
-                {t(`selectedWork.dashboard.metrics.${i}.caption`)}
-              </span>
+          Array.from({ length: sidebarCount }, (_, i) => (
+            <div
+              class:list={[
+                "flex items-center gap-2 p-2.5 mb-1 text-dim text-xs rounded-md",
+                i === 0 && "bg-blue/[0.08] text-text",
+              ]}
+            >
+              <Icon svg={sidebarIcons[i]} class="w-3.5 h-3.5 shrink-0" />
+              <span>{t(`selectedWork.dashboard.sidebar.${i}`)}</span>
             </div>
           ))
         }
-      </div>
-      <div
-        class="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-3 items-center mt-5"
-      >
-        {
-          Array.from({ length: flowCount }, (_, i) => (
-            <>
-              {i > 0 && <div class="text-blue text-xl">→</div>}
-              <div class="p-3 rounded-xl border border-border bg-tint">
-                <small class="text-blue font-mono text-xs">
-                  {t(`selectedWork.dashboard.flow.${i}.label`)}
+      </aside>
+      <div class="p-8 bg-tint">
+        <div class="flex justify-between items-end pb-7 border-b border-border">
+          <div>
+            <small class="font-mono text-xs tracking-widest text-dim block">
+              {t("selectedWork.dashboard.networkLabel")}
+            </small>
+            <strong class="block mt-1 text-xl"
+              >{t("selectedWork.dashboard.networkTitle")}</strong
+            >
+          </div>
+          <span
+            class="border border-green/[0.16] rounded-full px-2.5 py-2 text-mint font-mono text-xs"
+          >
+            <i class="inline-block w-1.5 h-1.5 rounded-full bg-green mr-1 animate-pulse"
+            ></i>{t("selectedWork.dashboard.status")}
+          </span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-4">
+          {
+            metricValues.map((value, i) => (
+              <div
+                class:list={[
+                  "p-5 rounded-xl border border-border border-l-2 bg-tint",
+                  metricAccentBorder[i],
+                ]}
+              >
+                <small class="font-mono text-dim text-xs tracking-widest block">
+                  {t(`selectedWork.dashboard.metrics.${i}.label`)}
                 </small>
-                <strong class="block text-sm">
-                  {t(`selectedWork.dashboard.flow.${i}.value`)}
+                <strong class="block mt-2 text-3xl tracking-tighter">
+                  {value}
                 </strong>
                 <span class="text-dim text-xs">
-                  {t(`selectedWork.dashboard.flow.${i}.caption`)}
+                  {t(`selectedWork.dashboard.metrics.${i}.caption`)}
                 </span>
               </div>
-            </>
-          ))
-        }
+            ))
+          }
+        </div>
+        <div
+          class="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-3 items-center mt-5"
+        >
+          {
+            Array.from({ length: flowCount }, (_, i) => (
+              <>
+                {i > 0 && (
+                  <div class="text-blue text-xl motion-safe:animate-pulse">→</div>
+                )}
+                <div
+                  class:list={[
+                    "p-3 rounded-xl border border-border border-t-2 bg-tint",
+                    flowAccentBorder[i],
+                  ]}
+                >
+                  <small class:list={["font-mono text-xs", flowAccentText[i]]}>
+                    {t(`selectedWork.dashboard.flow.${i}.label`)}
+                  </small>
+                  <strong class="block text-sm">
+                    {t(`selectedWork.dashboard.flow.${i}.value`)}
+                  </strong>
+                  <span class="text-dim text-xs">
+                    {t(`selectedWork.dashboard.flow.${i}.caption`)}
+                  </span>
+                </div>
+              </>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>

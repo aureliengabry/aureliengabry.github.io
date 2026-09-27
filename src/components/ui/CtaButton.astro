@@ -16,10 +16,7 @@ const {
 } = Astro.props;
 
 const sizeClasses = size === "lg" ? "min-h-14 px-6" : "min-h-12 px-5";
-// A softer, single-use version of --shadow-raised: that token is also worn by
-// BackToTop's floating circular button, where the heavier drama reads fine —
-// but on this wide CTA it looked like "too much" shadow, hence the lighter
-// one-off value here instead of adjusting the shared token.
+// Softer one-off shadow — the shared --shadow-raised token was too heavy here.
 const variantClasses =
   variant === "primary"
     ? "bg-raise shadow-[0_6px_16px_rgba(0,0,0,0.1),inset_0_1px_0_var(--color-raise-line)] text-text"

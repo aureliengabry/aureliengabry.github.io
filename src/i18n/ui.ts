@@ -1,7 +1,5 @@
-// Translation dictionary — flat 'namespace.key' strings, following Astro's
-// i18n recipe (https://docs.astro.build/en/recipes/i18n/). Keys mirror the
-// component structure (e.g. 'selectedWork.integration.protocols.0.description')
-// so each section's copy is easy to find.
+// Flat 'namespace.key' strings, both languages. Keys mirror the component
+// structure so each section's copy is easy to find.
 export const languages = {
   en: "English",
   fr: "Français",

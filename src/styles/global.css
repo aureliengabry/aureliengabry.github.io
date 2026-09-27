@@ -1,18 +1,12 @@
 @import "tailwindcss";
 
-/* Custom state variant — activated when the element itself carries the
-   `.scrolled` class, which Layout.astro toggles on the `.site-header` after
-   scrolling 30px. Lets us express the scroll state with Tailwind utilities
-   (`scrolled:w-…`, `scrolled:h-14`, …) instead of a hand-written CSS class. */
+/* Lets Tailwind utilities key off the `.scrolled` class Layout.astro toggles. */
 @custom-variant scrolled (&.scrolled);
 
-/* Same trick for the light theme: lets the header's theme-toggle icons use
-   `theme-light:hidden` / `theme-light:block` instead of a hand-written rule
-   keyed off the <html data-theme="light"> attribute Layout.astro sets. */
+/* Same trick, keyed off the `data-theme="light"` attribute. */
 @custom-variant theme-light (:root[data-theme="light"] &);
 
-/* And again for the back-to-top button: Layout.astro's scroll listener
-   toggles `.visible` once the page has scrolled past a threshold. */
+/* Same trick, keyed off the back-to-top button's `.visible` class. */
 @custom-variant back-top-visible (&.visible);
 
 /* ---------------------------------------------------------------------------
@@ -40,9 +34,7 @@
   --color-mint: #9fdcc4;
   --color-faint: #334155;
 
-  /* Neutral tints (tag pills, metric boxes, raised buttons/glass highlight) —
-     baked-in alpha so they can flip direction (lighten vs darken) per theme,
-     see the [data-theme="light"] override below. */
+  /* Neutral tints with baked-in alpha so they flip lighten/darken per theme. */
   --color-raise: rgba(255, 255, 255, 0.09);
   --color-raise-line: rgba(255, 255, 255, 0.06);
   --color-tint: rgba(255, 255, 255, 0.035);
@@ -54,10 +46,8 @@
   --breakpoint-md: 59.375rem;
   --breakpoint-sm: 40.625rem;
 
-  /* Letter-spacing steps this design repeats beyond Tailwind's 6 defaults —
-     named once here instead of scattered as tracking-[...] across every
-     component (0.1em/-0.05em already match Tailwind's own tracking-widest /
-     tracking-tighter, so components use those built-ins directly instead). */
+  /* Letter-spacing steps beyond Tailwind's 6 defaults, named once here
+     instead of scattered as tracking-[...] across every component. */
   --tracking-label: 0.08em;
   --tracking-eyebrow: 0.14em;
   --tracking-loose: 0.12em;
@@ -67,9 +57,7 @@
   --tracking-display: -0.065em;
   --tracking-stat: -0.07em;
 
-  /* Fluid font sizes repeated identically across files (section h2s, stat
-     figures) — named so they read as one shared scale instead of two
-     copies of the same clamp() string. */
+  /* Fluid font sizes repeated across files, named once as a shared scale. */
   --text-h2: clamp(36px, 4.4vw, 58px);
   --text-stat: clamp(46px, 5vw, 68px);
 
@@ -91,9 +79,8 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Light theme — toggled via the header button, which sets data-theme on
-   <html> and persists the choice to localStorage (see Layout.astro). Dark
-   stays the default so a first-time visitor sees the same site as before.
+   Light theme — toggled via the header button (sets data-theme on <html>,
+   see Layout.astro). Dark stays the default.
 --------------------------------------------------------------------------- */
 :root[data-theme="light"] {
   --color-bg: #f5f7fa;
@@ -117,9 +104,7 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Custom named utilities (Tailwind v4 @utility) for grid templates repeated
-   within a single component — grid-template-columns has no themeable scale,
-   so this is the conventional Tailwind way to name a repeated one off value.
+   Named grid templates — grid-template-columns has no themeable scale.
 --------------------------------------------------------------------------- */
 @utility grid-cols-label-value {
   grid-template-columns: 200px 1fr;
@@ -182,20 +167,14 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
   }
 
-  /* Glassmorphism surface — reused across ~10 elements, so this stays a
-     shared class; everything Tailwind can express (border/shadow/blur) is
-     applied via @apply, leaving only the diagonal gradient as raw CSS. */
+  /* Glassmorphism surface, reused across ~10 elements. */
   .glass {
     background: linear-gradient(to bottom, var(--color-raise), transparent);
     @apply border border-border shadow-glass backdrop-blur-xl;
   }
 
-  /* Timeline node dot (Education.astro) — shared across every timeline
-     entry, so it stays a class rather than repeating this before: variant
-     chain on each <article>. Scoped to md+ (matching the timeline's own
-     md:before:... rail line in Education.astro) since below that
-     breakpoint there's no rail for the dot to sit on — it would otherwise
-     float at the left edge with nothing to anchor it to. */
+  /* Timeline node dot (Education.astro). Scoped to md+ since the rail
+     line it sits on only exists at that breakpoint. */
   @media (min-width: 59.375rem) {
     .timeline-content::before {
       @apply content-[''] absolute left-[-5px] top-[37px] w-[9px] h-[9px] rounded-full border-2 border-blue bg-bg;
@@ -203,9 +182,7 @@
     }
   }
 
-  /* Scroll-reveal animation (JS toggles is-visible on ~11 different section
-     elements across separate files — kept as a shared class rather than
-     repeating this transition on every one of them). */
+  /* Scroll-reveal animation, shared by ~11 section elements (JS toggles is-visible). */
   .reveal {
     @apply opacity-0 translate-y-6 transition duration-700 ease-in-out;
   }
@@ -214,9 +191,8 @@
     @apply opacity-100 translate-y-0;
   }
 
-  /* Mobile nav dropdown (Header.astro) — kept as a class because it needs a
-     nested child-selector (the `a` padding) and overrides `hidden` with
-     `!important`, both awkward to express as inline variants. */
+  /* Mobile nav dropdown (Header.astro): needs a nested selector and
+     `!important`, both awkward as inline variants. */
   .desktop-nav.mobile-open {
     @apply absolute top-[72px] left-0 right-0 m-0 flex! flex-col gap-0 p-3 border border-border rounded-[14px] bg-[color-mix(in_srgb,var(--color-bg)_94%,transparent)];
   }
