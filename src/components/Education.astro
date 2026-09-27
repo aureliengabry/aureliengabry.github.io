@@ -8,10 +8,18 @@ const t = useTranslations(lang);
 
 const entries = [
   {
-    org: "Université de Technologie de Belfort-Montbéliard — Besançon",
+    org: "Université de Sciences et Techniques, Besançon",
     tagCount: 6,
+    logo: "/images/logos/university_logo.png",
+    // Solid black wordmark — invisible on dark without inverting it.
+    invertOnDark: true,
   },
-  { org: "Expleo", tagCount: 5 },
+  {
+    org: "Expleo",
+    tagCount: 5,
+    logo: "/images/logos/expleo_logo.png",
+    invertOnDark: false,
+  },
 ];
 ---
 
@@ -19,7 +27,7 @@ const entries = [
   class="max-w-content mx-auto px-6 py-24 md:py-36 scroll-mt-28"
   id="education"
 >
-  <SectionIntro index="06" i18nKey="education" />
+  <SectionIntro index="03" i18nKey="education" />
 
   <div
     class="timeline relative border-t border-border md:before:content-[''] md:before:absolute md:before:left-[180px] md:before:top-0 md:before:bottom-0 md:before:w-px md:before:bg-border"
@@ -32,8 +40,22 @@ const entries = [
             class="md:grid grid-cols-timeline min-h-72 border-b border-border"
             data-reveal
           >
-            <div class="pt-8 font-mono text-xs tracking-label text-blue md:pr-8">
+            <div
+              class="pt-8 font-mono text-xs tracking-label text-blue md:pr-8 md:flex md:h-full md:flex-col md:text-right"
+            >
               {t(`education.entries.${i}.date`)}
+              <div class="mt-4 flex flex-1 items-center justify-center">
+                <img
+                  src={entry.logo}
+                  alt={entry.org}
+                  class:list={[
+                    "h-20 w-auto max-w-[150px] object-contain",
+                    entry.invertOnDark && "invert theme-light:invert-0",
+                  ]}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
             <div class="timeline-content relative pt-2 pb-10 md:pt-8 md:pl-12 md:pr-0">
               <div class="flex justify-between gap-5 mb-5">
@@ -44,11 +66,11 @@ const entries = [
                   {t(`education.entries.${i}.location`)}
                 </span>
               </div>
-              <h3 class="mt-0 mb-1 text-3xl tracking-title">
+              <h3 class="mt-0 mb-1 text-3xl tracking-title font-bold">
                 {t(`education.entries.${i}.title`)}
               </h3>
-              <p class="text-text font-semibold">{entry.org}</p>
-              <p class="max-w-3xl text-muted text-sm leading-body-loose">
+              <p class="text-text text-base md:text-lg font-semibold">{entry.org}</p>
+              <p class="max-w-3xl text-muted text-base md:text-lg leading-body-loose">
                 {t(`education.entries.${i}.descriptionPre`)}
                 {strong && <strong>{strong}</strong>}
                 {t(`education.entries.${i}.descriptionPost`)}

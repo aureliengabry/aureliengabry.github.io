@@ -1,0 +1,15 @@
+---
+// Renders a raw SVG string (imported via `?raw`) inline so it inherits
+// `currentColor`/theme like a hand-written <svg>, unlike <img src="...svg">.
+interface Props {
+  svg: string;
+  class?: string;
+}
+
+const { svg, class: className = "w-5 h-5" } = Astro.props;
+---
+
+<span
+  class:list={["inline-block [&>svg]:w-full [&>svg]:h-full", className]}
+  set:html={svg}
+/>
