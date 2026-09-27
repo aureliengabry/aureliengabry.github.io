@@ -22,7 +22,7 @@ const tags = Array.from({ length: count }, (_, i) => t(`${i18nKey}.${i}`));
     tags.map((tag) => (
       <span
         class:list={[
-          "rounded-md border px-2 py-1.5 font-mono text-xs",
+          "rounded-md border px-2 py-1.5 font-mono text-xs md:text-sm",
           accent
             ? "border-blue/30 bg-blue/10 text-blue font-semibold"
             : "border-border bg-tint text-tag",

@@ -32,15 +32,15 @@ const t = useTranslations(lang);
           class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
         />
       </a>
-      <h3 class="mt-6 mb-2.5 text-3xl tracking-title">
+      <h3 class="mt-6 mb-2.5 text-3xl tracking-title font-bold">
         {t("otherWork.card.title")}
       </h3>
-      <p class="text-muted text-base leading-body">
+      <p class="text-muted text-base md:text-lg leading-body">
         {t("otherWork.card.description")}
       </p>
       <TagList i18nKey="otherWork.card.tags" count={3} />
       <a
-        class="inline-block mt-5 text-text text-xs font-bold hover:text-soft"
+        class="inline-block mt-5 text-text text-xs md:text-sm font-bold hover:text-soft"
         href={LINKS.azeliaPhotographie}
         target="_blank"
         rel="noopener">{t("otherWork.card.link")} ↗</a
@@ -49,7 +49,7 @@ const t = useTranslations(lang);
 
     <div class="glass flex items-center gap-6 p-8 rounded-2xl" data-reveal>
       <span class="text-blue text-2xl">→</span>
-      <p class="text-muted text-base">{t("otherWork.note")}</p>
+      <p class="text-muted text-base md:text-lg">{t("otherWork.note")}</p>
     </div>
   </div>
 </section>

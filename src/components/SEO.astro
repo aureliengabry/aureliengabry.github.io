@@ -18,7 +18,6 @@ export interface Props {
   keywords?: string[] | string;
   author?: string;
   type?: string;
-  image?: string;
   robots?: string;
   themeColor?: string;
 }
@@ -33,13 +32,14 @@ const {
     "Python developer",
     "React developer",
     "Vue developer",
+    "Nuxt developer",
+    "Astro developer",
     "backend developer",
     "frontend developer",
     "embedded software engineer",
     "Linux ARM software",
     "distributed systems engineer",
     "software engineer France",
-    "freelance software developer",
     "API developer",
     "Flask",
     "SQLAlchemy",
@@ -52,7 +52,6 @@ const {
   ],
   author = NAME,
   type = "website",
-  image = "/og-image.png",
   robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   themeColor = "#070b12",
 } = Astro.props;
@@ -64,9 +63,6 @@ const siteURL = Astro.site
   ? new URL(Astro.url.pathname, Astro.site)
   : Astro.url;
 const canonical = siteURL;
-const absoluteImage = Astro.site
-  ? new URL(image, Astro.site).toString()
-  : image;
 
 const titleWithSite = `${title} — ${NAME}`;
 
@@ -79,14 +75,16 @@ const jsonLd = {
       "@id": `${canonical}#person`,
       name: NAME,
       url: canonical,
-      image: absoluteImage,
       jobTitle: role,
       description:
-        "Full-stack software engineer specializing in backend services (Python, Flask, SQLAlchemy, SQLite), frontend interfaces (React, Vue) and embedded Linux/ARM software, distributed systems and transport ticketing platforms.",
+        "Full-stack software engineer specializing in backend services (Python, Flask, SQLAlchemy, SQLite), frontend interfaces (React, Vue, Nuxt, Astro) and embedded Linux/ARM software, distributed systems and transport ticketing platforms.",
       knowsAbout: [
         "Python",
         "React",
         "Vue",
+        "Nuxt",
+        "Astro",
+        "Tailwind CSS",
         "Flask",
         "SQLAlchemy",
         "SQLite",
@@ -97,6 +95,8 @@ const jsonLd = {
         "Docker",
         "MQTT",
         "SNMP",
+        "ITxPT",
+        "VHDL",
         "Distributed Systems",
         "Software Architecture",
         "IoT",
@@ -107,7 +107,11 @@ const jsonLd = {
       },
       alumniOf: {
         "@type": "CollegeOrUniversity",
-        name: "Université de Technologie de Belfort-Montbéliard",
+        name: "Université de Sciences et Techniques, Besançon",
+      },
+      worksFor: {
+        "@type": "Organization",
+        name: "Arrive",
       },
       knowsLanguage: ["en", "fr"],
       sameAs: [twitterProfile, LINKS.github, LINKS.linkedin],
@@ -169,20 +173,13 @@ const jsonLd = {
 <meta property="og:title" content={titleWithSite} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
-<meta property="og:image" content={absoluteImage} />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:alt" content={`${NAME} — ${role}`} />
 <meta property="og:locale" content={ogLocale} />
 <meta property="og:locale:alternate" content={ogLocaleAlternate} />
 
 <!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content={titleWithSite} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={absoluteImage} />
-<meta name="twitter:image:alt" content={`${NAME} — ${role}`} />
 <meta name="twitter:site" content={TWITTER_HANDLE} />
 <meta name="twitter:creator" content={TWITTER_HANDLE} />
 

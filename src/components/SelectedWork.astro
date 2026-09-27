@@ -1,20 +1,20 @@
 ---
 import Eyebrow from "./ui/Eyebrow.astro";
 import DetailLabel from "./ui/DetailLabel.astro";
-import TagList from "./ui/TagList.astro";
 import Icon from "./ui/Icon.astro";
 import DashboardMockup from "./visuals/DashboardMockup.astro";
 import targetIcon from "../icons/target.svg?raw";
 import personIcon from "../icons/person.svg?raw";
 import layersIcon from "../icons/layers.svg?raw";
 import chipIcon from "../icons/chip.svg?raw";
+import databaseIcon from "../icons/database.svg?raw";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const protocolCount = 6;
 const constraintCount = 4;
+const integrationItemCount = 4;
 
 // One hand-drawn line icon per detail column, so "the challenge / my role /
 // the tech / the constraints" reads as distinct highlights instead of blocks
@@ -25,154 +25,285 @@ const detailIcons = {
   tech: layersIcon,
   constraints: chipIcon,
 };
+
+// Quick visual for the architecture items: three components it's built
+// from, connected in reading order, each tied to the physical unit it runs
+// on (bus AVL / onboard unit / validator) so the layers map to real
+// hardware instead of staying abstract. Tags kept to the exact facts named
+// in those items (no re-listing the whole project stack here).
+const architectureNodes = [
+  {
+    icon: targetIcon,
+    labelKey: "selectedWork.integration.nodes.0.label",
+    deviceKey: "selectedWork.integration.nodes.0.device",
+    tags: [4, 5, 3].map((i) =>
+      t(`selectedWork.integration.protocols.${i}.name`),
+    ),
+  },
+  {
+    icon: databaseIcon,
+    labelKey: "selectedWork.integration.nodes.1.label",
+    deviceKey: "selectedWork.integration.nodes.1.device",
+    tags: ["Python", "React", "Docker", "Linux / ARM"],
+  },
+  {
+    icon: chipIcon,
+    labelKey: "selectedWork.integration.nodes.2.label",
+    deviceKey: "selectedWork.integration.nodes.2.device",
+    tags: [0, 1, 2].map((i) =>
+      t(`selectedWork.integration.protocols.${i}.name`),
+    ),
+  },
+];
 ---
 
 <section
-  class="max-w-content mx-auto px-6 pt-28 pb-36 md:pt-20 scroll-mt-28"
+  class="max-w-content mx-auto px-6 pt-24 pb-24 md:pt-36 md:pb-36 scroll-mt-28"
   id="work"
 >
-  <div class="md:grid grid-cols-2 gap-20 items-end max-w-none">
+  <div class="md:grid grid-cols-2 gap-20 items-end max-w-none mb-12">
     <div>
       <Eyebrow index="02" i18nKey="selectedWork" />
-      <h2 class="text-h2 leading-heading-tight tracking-heading mb-4">
+      <h2 class="text-h2 leading-heading-tight tracking-heading font-bold mb-4">
         {t("selectedWork.heading")}
       </h2>
     </div>
-    <p class="text-muted leading-body self-end">
+    <p class="text-muted text-base md:text-lg leading-body self-end">
       {t("selectedWork.description")}
     </p>
   </div>
 
-  <article class="project" data-reveal>
+  <article class="project">
     <div
       class="flex justify-between items-center font-mono text-xs tracking-label text-dim border-b border-border pb-4"
     >
       <span>{t("selectedWork.meta")}</span>
       <span>{t("selectedWork.tags")}</span>
     </div>
-    <div class="flex justify-between items-end mt-10 mb-8">
-      <div>
-        <h3
-          class="mb-4 text-[calc(var(--text-h2)*1.25)] leading-display tracking-heading"
-        >
-          {t("selectedWork.titleLead")}<br /><em>{t("selectedWork.titleEm")}</em
-          >
-        </h3>
-        <p class="max-w-xl text-muted">{t("selectedWork.description2")}</p>
-      </div>
-      <span class="text-blue text-2xl">↗</span>
+    <div class="flex justify-between items-end mt-10 mb-10 md:mb-16">
+      <h3
+        class="text-[calc(var(--text-h2)*1.25)] leading-display tracking-heading font-bold"
+      >
+        {t("selectedWork.titleLead")} <em>{t("selectedWork.titleEm")}</em>
+      </h3>
     </div>
 
-    <DashboardMockup />
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
-      <div class="glass p-7 rounded-2xl" data-reveal>
+    <!-- Beat: at-a-glance — challenge and role, side by side. No card
+         border/fill; a single divide-x rule between the two columns (same
+         device as the approach items in Expertise.astro) instead of two
+         more glass tiles. Titles match that same section's plain bold h4
+         instead of the blue mono DetailLabel, for the same reason.
+         Placed before the dashboard mockup (not after) so the reader has
+         the context — what the challenge is, what I actually did — before
+         looking at a screen full of numbers with nothing to anchor them. -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-7 md:gap-x-0 md:divide-x md:divide-border"
+    >
+      <div class="md:pr-8">
         <div class="flex items-center gap-3 mb-4">
           <span
             class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
           >
             <Icon svg={detailIcons.challenge} class="w-5 h-5" />
           </span>
-          <DetailLabel
-            i18nKey="selectedWork.details.challengeLabel"
-            class="mb-0"
-          />
+          <h4 class="text-base md:text-lg font-bold">
+            {t("selectedWork.details.challengeLabel")}
+          </h4>
         </div>
-        <p class="text-muted text-base leading-body">
+        <p class="text-muted text-base md:text-lg leading-body">
           {t("selectedWork.details.challenge")}
         </p>
       </div>
-      <div class="glass p-7 rounded-2xl" data-reveal>
+      <div class="md:pl-8">
         <div class="flex items-center gap-3 mb-4">
           <span
             class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
           >
             <Icon svg={detailIcons.role} class="w-5 h-5" />
           </span>
-          <DetailLabel i18nKey="selectedWork.details.roleLabel" class="mb-0" />
+          <h4 class="text-base md:text-lg font-bold">
+            {t("selectedWork.details.roleLabel")}
+          </h4>
         </div>
-        <p class="text-muted text-base leading-body">
+        <p class="text-muted text-base md:text-lg leading-body">
           {t("selectedWork.details.role")}
         </p>
       </div>
     </div>
 
-    <div class="glass mt-5 p-7 md:p-9 rounded-2xl" data-reveal>
+    <!-- The dashboard mockup is hidden below md (DashboardMockup.astro is
+         `hidden md:block`), so its intro line is wrapped the same way —
+         otherwise mobile would read a line introducing a table that never
+         actually shows up. The dashboard now has context to land on (the
+         challenge and role above it), so a one-line intro is enough. -->
+    <div class="hidden md:block md:mt-16">
+      <p class="text-muted text-base md:text-lg leading-body">
+        {t("selectedWork.dashboardIntro")}
+      </p>
+      <div class="mt-4">
+        <DashboardMockup />
+      </div>
+    </div>
+
+    <!-- Beat: technologies — architecture, protocols and stack broken into
+         short labelled items instead of one dense paragraph, so each part
+         of the stack (backend, messaging, fleet/AVL, standard) is scannable
+         on its own. Text on the left, the diagram stacked vertically on the
+         right (mirrors the constraints beat below), so the schema reads as
+         a companion to the items, not a separate full-width block. -->
+    <div class="mt-10 md:mt-16 pt-10 border-t border-border">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
+            >
+              <Icon svg={detailIcons.tech} class="w-5 h-5" />
+            </span>
+            <DetailLabel
+              i18nKey="selectedWork.integration.label"
+              class="mb-0"
+            />
+          </div>
+          <h4
+            class="mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading font-bold"
+          >
+            {t("selectedWork.integration.heading")}
+          </h4>
+          <div class="flex flex-col gap-5">
+            {
+              Array.from({ length: integrationItemCount }, (_, i) => (
+                <div>
+                  <DetailLabel
+                    i18nKey={`selectedWork.integration.items.${i}.label`}
+                    class="mb-1"
+                  />
+                  <p class="text-muted text-base md:text-lg leading-body">
+                    {t(`selectedWork.integration.items.${i}.description`)}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Quick visual read of the items on the left: three parts
+             it's built from, top to bottom, plus the standard that ties
+             them together. The outer div is just a centering wrapper for
+             the grid cell; the bordered panel is a separate inner div
+             sized to the diagram's own content (w-fit) instead of
+             stretching to the full column width, so the frame hugs the
+             graph instead of leaving a lot of empty border on each side. -->
+        <div class="flex justify-center">
+          <div class="glass rounded-2xl p-4 md:p-5 w-fit">
+            <div class="flex items-center justify-center gap-2 mb-5">
+              <span class="h-px w-8 bg-border" aria-hidden="true" />
+              <span class="font-mono text-xs font-semibold tracking-widest text-blue">
+                ITxPT
+              </span>
+              <span class="text-dim text-xs md:text-sm">
+                {t("selectedWork.integration.badge")}
+              </span>
+              <span class="h-px w-8 bg-border" aria-hidden="true" />
+            </div>
+            <div class="flex flex-col gap-2">
+              {
+                architectureNodes.map((node, i) => (
+                  <>
+                    {i > 0 && (
+                      <div
+                        class="flex items-center justify-center text-blue text-xl"
+                        aria-hidden="true"
+                      >
+                        ↓
+                      </div>
+                    )}
+                    <div class="px-3 py-2 text-center">
+                      <div class="flex justify-center mb-3">
+                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg border border-border bg-tint text-blue">
+                          <Icon svg={node.icon} class="w-6 h-6" />
+                        </span>
+                      </div>
+                      <strong class="block text-base md:text-lg font-bold">
+                        {t(node.labelKey)}
+                      </strong>
+                      <span class="block mt-0.5 font-mono text-xs md:text-sm text-blue">
+                        {t(node.deviceKey)}
+                      </span>
+                      <span class="block mt-2 font-mono text-xs md:text-sm text-dim">
+                        {node.tags.join(" · ")}
+                      </span>
+                    </div>
+                  </>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beat: constraints — text on the left, the four limits as a plain
+         label/value table on the right (divide-y only, no outer card) so
+         the page isn't just the same border-and-rounded-tile repeated. -->
+    <div class="mt-10 md:mt-16 pt-10 border-t border-border">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
+            >
+              <Icon svg={detailIcons.constraints} class="w-5 h-5" />
+            </span>
+            <DetailLabel
+              i18nKey="selectedWork.constraints.label"
+              class="mb-0"
+            />
+          </div>
+          <h4
+            class="mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading font-bold"
+          >
+            {t("selectedWork.constraints.heading")}
+          </h4>
+          <p class="text-muted text-base md:text-lg leading-body">
+            {t("selectedWork.constraints.description")}
+          </p>
+        </div>
+        <table class="w-full border-collapse text-left">
+          <tbody class="divide-y divide-border">
+            {
+              Array.from({ length: constraintCount }, (_, i) => (
+                <tr>
+                  <td class="py-3.5 pr-4 align-top font-mono text-xs md:text-sm text-blue whitespace-nowrap">
+                    {t(`selectedWork.constraints.rows.${i}.label`)}
+                  </td>
+                  <td class="py-3.5 text-sm md:text-base font-semibold">
+                    {t(`selectedWork.constraints.rows.${i}.value`)}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Beat: also at Arrive — other projects running alongside this one.
+         Given the same visual weight as the beats above it (icon badge +
+         label + full-size paragraph), not a small dim aside, so it doesn't
+         get missed. -->
+    <div class="mt-10 md:mt-16 pt-10 border-t border-border">
       <div class="flex items-center gap-3 mb-4">
         <span
           class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
         >
           <Icon svg={detailIcons.tech} class="w-5 h-5" />
         </span>
-        <DetailLabel i18nKey="selectedWork.details.techLabel" class="mb-0" />
+        <DetailLabel i18nKey="selectedWork.otherProjectsLabel" class="mb-0" />
       </div>
-      <TagList i18nKey="selectedWork.details.tags" count={7} accent />
-
-      <div class="mt-8 pt-8 border-t border-border">
-        <DetailLabel i18nKey="selectedWork.integration.label" />
-        <h4
-          class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading"
-        >
-          {t("selectedWork.integration.heading")}
-        </h4>
-        <p class="max-w-2xl mb-8 text-muted text-base leading-body">
-          {t("selectedWork.integration.description")}
-        </p>
-        <div
-          class="protocol-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"
-        >
-          {
-            Array.from({ length: protocolCount }, (_, i) => (
-              <div class="min-h-32 p-5 rounded-xl border border-border bg-tint">
-                <strong class="block font-mono text-lg">
-                  {t(`selectedWork.integration.protocols.${i}.name`)}
-                </strong>
-                <span class="block mt-8 text-dim text-xs">
-                  {t(`selectedWork.integration.protocols.${i}.description`)}
-                </span>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-
-    <div class="glass mt-5 p-7 md:p-9 rounded-2xl" data-reveal>
-      <div class="flex items-center gap-3 mb-4">
-        <span
-          class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0"
-        >
-          <Icon svg={detailIcons.constraints} class="w-5 h-5" />
-        </span>
-        <DetailLabel i18nKey="selectedWork.constraints.label" class="mb-0" />
-      </div>
-      <h4
-        class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading"
-      >
-        {t("selectedWork.constraints.heading")}
-      </h4>
-      <p class="max-w-2xl mb-8 text-muted text-base leading-body">
-        {t("selectedWork.constraints.description")}
+      <p class="max-w-2xl text-muted text-base md:text-lg leading-body">
+        {t("selectedWork.otherProjects")}
       </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 border-t border-border">
-        {
-          Array.from({ length: constraintCount }, (_, i) => (
-            <div
-              class:list={[
-                "flex justify-between gap-8 py-4 border-b border-border",
-                i % 2 === 0 && "sm:pr-8",
-              ]}
-            >
-              <span class="font-mono text-xs text-blue">
-                {t(`selectedWork.constraints.rows.${i}.label`)}
-              </span>
-              <strong class="text-sm font-semibold">
-                {t(`selectedWork.constraints.rows.${i}.value`)}
-              </strong>
-            </div>
-          ))
-        }
-      </div>
     </div>
   </article>
 </section>

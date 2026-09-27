@@ -25,8 +25,8 @@
 
   --color-bg: #070b12;
   --color-bg-2: #0b111b;
-  --color-border: rgba(255, 255, 255, 0.105);
-  --color-border-strong: rgba(255, 255, 255, 0.18);
+  --color-border: rgba(255, 255, 255, 0.18);
+  --color-border-strong: rgba(255, 255, 255, 0.28);
   --color-text: #f8fafc;
   --color-soft: #b9c5d5;
   --color-muted: #9ca8b8;
@@ -85,9 +85,9 @@
   /* Named multi-stop shadows so raised buttons / glass panels reference one
      token instead of repeating the same rgba string at every call site. */
   --shadow-raised:
-    0 12px 35px rgba(0, 0, 0, 0.2), inset 0 1px 0 var(--color-raise-line);
+    0 10px 25px rgba(0, 0, 0, 0.05), inset 0 1px 0 var(--color-raise-line);
   --shadow-glass:
-    0 16px 45px rgba(0, 0, 0, 0.16), inset 0 1px 0 var(--color-raise-line);
+    0 10px 10px rgba(0, 0, 0, 0.1), inset 0 1px 0 var(--color-raise-line);
 }
 
 /* ---------------------------------------------------------------------------
@@ -98,8 +98,8 @@
 :root[data-theme="light"] {
   --color-bg: #f5f7fa;
   --color-bg-2: #ffffff;
-  --color-border: rgba(15, 23, 42, 0.1);
-  --color-border-strong: rgba(15, 23, 42, 0.16);
+  --color-border: rgba(15, 23, 42, 0.2);
+  --color-border-strong: rgba(15, 23, 42, 0.32);
   --color-text: #0f172a;
   --color-soft: #334155;
   --color-muted: #475569;
@@ -127,31 +127,6 @@
 
 @utility grid-cols-timeline {
   grid-template-columns: 180px 1fr;
-}
-
-/* Slow 3D drift for the Hero circuit board (CircuitBoard.astro) — the base
-   rotateX/rotateY values match the element's static [transform:...] utility
-   so the board still reads as tilted in 3D when prefers-reduced-motion
-   drops the animation and only the static transform applies. */
-@keyframes circuit-tilt {
-  0%,
-  100% {
-    transform: rotateX(9deg) rotateY(-15deg);
-  }
-  50% {
-    transform: rotateX(5deg) rotateY(-9deg);
-  }
-}
-
-/* Breathing glow on the circuit board's central chip (CircuitBoard.astro). */
-@keyframes chip-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 40px rgba(37, 99, 235, 0.18);
-  }
-  50% {
-    box-shadow: 0 0 70px rgba(37, 99, 235, 0.4);
-  }
 }
 
 /* ------------------------------------------------------------------------- */
@@ -211,16 +186,21 @@
      shared class; everything Tailwind can express (border/shadow/blur) is
      applied via @apply, leaving only the diagonal gradient as raw CSS. */
   .glass {
-    background: linear-gradient(145deg, var(--color-raise), var(--color-tint));
+    background: linear-gradient(to bottom, var(--color-raise), transparent);
     @apply border border-border shadow-glass backdrop-blur-xl;
   }
 
   /* Timeline node dot (Education.astro) — shared across every timeline
      entry, so it stays a class rather than repeating this before: variant
-     chain on each <article>. */
-  .timeline-content::before {
-    @apply content-[''] absolute left-[-5px] top-[37px] w-[9px] h-[9px] rounded-full border-2 border-blue bg-bg;
-    box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
+     chain on each <article>. Scoped to md+ (matching the timeline's own
+     md:before:... rail line in Education.astro) since below that
+     breakpoint there's no rail for the dot to sit on — it would otherwise
+     float at the left edge with nothing to anchor it to. */
+  @media (min-width: 59.375rem) {
+    .timeline-content::before {
+      @apply content-[''] absolute left-[-5px] top-[37px] w-[9px] h-[9px] rounded-full border-2 border-blue bg-bg;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
+    }
   }
 
   /* Scroll-reveal animation (JS toggles is-visible on ~11 different section

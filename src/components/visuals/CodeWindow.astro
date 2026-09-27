@@ -1,0 +1,73 @@
+---
+// Fills the empty right side of the Hero. Chosen over an abstract diagram
+// because it shows the actual craft (code) rather than illustrating it, and
+// the snippet is the real shape of the platform described in the Hero copy:
+// a validation request that still succeeds when the network is down.
+// Reuses the same browser-chrome + glass language as SelectedWork's
+// DashboardMockup so the two visuals read as one design system, not two.
+---
+
+<div class="relative hidden md:block w-full max-w-lg justify-self-end">
+  <div
+    class="absolute -inset-10 -z-10 bg-[radial-gradient(ellipse,rgba(37,99,235,0.16),transparent_65%)] blur-2xl pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="rounded-2xl border border-border-strong glass overflow-hidden shadow-[0_40px_120px_-24px_rgba(37,99,235,0.35)]"
+    aria-hidden="true"
+    data-reveal
+  >
+    <div
+      class="flex items-center gap-2 h-11 px-4 border-b border-border bg-black/[0.12]"
+    >
+      <span class="w-2 h-2 rounded-full bg-[#fca5a5] theme-light:bg-[#f87171]"
+      ></span>
+      <span class="w-2 h-2 rounded-full bg-[#fcd34d] theme-light:bg-[#fbbf24]"
+      ></span>
+      <span class="w-2 h-2 rounded-full bg-green"></span>
+      <code class="text-dim font-mono text-xs ml-3">ticketing / validator.py</code>
+    </div>
+    <div class="grid grid-cols-[2rem_1fr] gap-x-4 gap-y-1 p-6 font-mono text-sm leading-relaxed overflow-x-auto">
+      <span class="text-dim select-none text-right">1</span>
+      <div><span class="text-blue">from</span> flask <span class="text-blue">import</span> Flask, jsonify</div>
+
+      <span class="text-dim select-none text-right">2</span>
+      <div>&nbsp;</div>
+
+      <span class="text-dim select-none text-right">3</span>
+      <div>app = Flask(__name__)</div>
+
+      <span class="text-dim select-none text-right">4</span>
+      <div>&nbsp;</div>
+
+      <span class="text-dim select-none text-right">5</span>
+      <div><span class="text-blue-strong">@app.route</span>(<span class="text-mint">"/validate"</span>, methods=[<span class="text-mint">"POST"</span>])</div>
+
+      <span class="text-dim select-none text-right">6</span>
+      <div><span class="text-blue">def</span> validate_ticket(ticket_id: str):</div>
+
+      <span class="text-dim select-none text-right">7</span>
+      <div class="pl-4 text-dim italic"># Works even when the network doesn't</div>
+
+      <span class="text-dim select-none text-right">8</span>
+      <div class="pl-4"><span class="text-blue">if</span> <span class="text-blue">not</span> is_online():</div>
+
+      <span class="text-dim select-none text-right">9</span>
+      <div class="pl-8"><span class="text-blue">return</span> queue_offline(ticket_id)</div>
+
+      <span class="text-dim select-none text-right">10</span>
+      <div>&nbsp;</div>
+
+      <span class="text-dim select-none text-right">11</span>
+      <div class="pl-4">result = ticketing.validate(ticket_id)</div>
+
+      <span class="text-dim select-none text-right">12</span>
+      <div class="pl-4">
+        <span class="text-blue">return</span> jsonify(status=result.status)<span
+          class="inline-block w-[2px] h-[1em] align-middle bg-blue ml-0.5 motion-safe:animate-pulse"
+        ></span>
+      </div>
+    </div>
+  </div>
+</div>

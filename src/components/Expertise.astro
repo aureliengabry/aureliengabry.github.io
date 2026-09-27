@@ -19,17 +19,17 @@ const t = useTranslations(lang);
 // instead of as an undifferentiated numbered list.
 const cards = [
   { key: "expertise.cards.0", tagCount: 4, icon: databaseIcon },
-  { key: "expertise.cards.1", tagCount: 4, icon: browserIcon },
+  { key: "expertise.cards.1", tagCount: 5, icon: browserIcon },
   { key: "expertise.cards.2", tagCount: 3, icon: chipIcon },
 ];
 
 // What I build (the cards above) is a different axis from how I work — so
 // this reads as a distinct, denser sub-block rather than a fourth card.
-const approachItems = [layersIcon, usersIcon, linkIcon, checkCircleIcon];
+const approachItems = [usersIcon, layersIcon, linkIcon, checkCircleIcon];
 ---
 
 <section
-  class="relative max-w-content mx-auto px-6 pt-24 pb-20 md:pt-36 md:pb-28 scroll-mt-28"
+  class="relative max-w-content mx-auto px-6 pt-24 pb-24 md:pt-36 md:pb-36 scroll-mt-28"
   id="expertise"
 >
   <SectionIntro index="01" i18nKey="expertise" />
@@ -46,10 +46,10 @@ const approachItems = [layersIcon, usersIcon, linkIcon, checkCircleIcon];
               <Icon svg={card.icon} class="w-7 h-7" />
             </span>
           </div>
-          <h3 class="mt-8 text-2xl tracking-subheading">
+          <h3 class="mt-8 text-2xl tracking-subheading font-bold text-center">
             {t(`${card.key}.title`)}
           </h3>
-          <p class="text-muted text-base leading-body">
+          <p class="text-muted text-base md:text-lg leading-body">
             {t(`${card.key}.description`)}
           </p>
           <TagList i18nKey={`${card.key}.tags`} count={card.tagCount} accent />
@@ -58,29 +58,35 @@ const approachItems = [layersIcon, usersIcon, linkIcon, checkCircleIcon];
     }
   </div>
 
-  <div class="glass mt-3.5 p-7 md:p-9 rounded-2xl" data-reveal>
+  <div class="mt-10 md:mt-16 pt-10 border-t border-border" data-reveal>
     <DetailLabel i18nKey="expertise.approach.label" />
     <h3
-      class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading"
+      class="max-w-xl mb-4 text-2xl md:text-[28px] leading-heading tracking-subheading font-bold"
     >
       {t("expertise.approach.heading")}
     </h3>
-    <p class="max-w-2xl mb-8 text-muted text-base leading-body">
+    <p class="max-w-2xl mb-8 text-muted text-base md:text-lg leading-body">
       {t("expertise.approach.description")}
     </p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5">
+    <!-- No card here, no border/rounded box per item either — a plain
+         border-t divider above is enough to break from the cards grid, so
+         this doesn't repeat the same glass/bordered-tile look on every
+         block. Generous gap spacing does the separating between items. -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-7 md:gap-x-0 md:divide-x md:divide-border"
+    >
       {
         approachItems.map((icon, i) => (
-          <div class="p-5 rounded-xl border border-border">
-            <div class="flex items-center gap-3 mb-3">
+          <div class="md:px-6 md:first:pl-0">
+            <div class="flex items-center gap-3 mb-4">
               <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-border bg-tint text-blue shrink-0">
                 <Icon svg={icon} class="w-5 h-5" />
               </span>
-              <h4 class="text-base font-semibold">
+              <h4 class="text-base md:text-lg font-bold">
                 {t(`expertise.approach.items.${i}.title`)}
               </h4>
             </div>
-            <p class="text-muted text-sm leading-body">
+            <p class="text-muted text-sm md:text-base leading-body">
               {t(`expertise.approach.items.${i}.description`)}
             </p>
           </div>
