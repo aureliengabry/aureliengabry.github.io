@@ -1,7 +1,9 @@
 ---
 import CtaButton from "./ui/CtaButton.astro";
 import PulsingDot from "./ui/PulsingDot.astro";
-import CircuitBoard from "./visuals/CircuitBoard.astro";
+import Icon from "./ui/Icon.astro";
+import CodeWindow from "./visuals/CodeWindow.astro";
+import chevronsDownIcon from "../icons/chevrons-down.svg?raw";
 import { EMAIL_HREF } from "../data/contact";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
@@ -26,11 +28,11 @@ const actions = [
 ---
 
 <section
-  class="w-full px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 md:min-h-[920px] pt-40 md:pt-48 grid md:grid-cols-[1.05fr_0.95fr] md:gap-20 items-center"
+  class="relative w-full px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32 min-h-screen pt-40 md:pt-48 grid md:grid-cols-[1.05fr_0.95fr] md:gap-20 items-center"
 >
   <div>
     <p
-      class="eyebrow flex items-center gap-2 text-xs font-mono tracking-eyebrow text-blue"
+      class="eyebrow flex items-center gap-2 text-xs font-mono tracking-eyebrow text-blue my-8"
     >
       <PulsingDot />
       {t("hero.eyebrow")}
@@ -40,8 +42,12 @@ const actions = [
     >
       Aurélien <em>GABRY</em>
     </h1>
-    <p class="max-w-2xl text-muted text-lg leading-body">
-      {t("hero.leadPre")}<strong>{t("hero.leadStrong")}</strong>{
+    <p class="max-w-2xl text-muted text-lg md:text-xl leading-body">
+      {t("hero.lead1Pre")}<strong>{t("hero.lead1Tech")}</strong>{
+        t("hero.lead1Post")
+      }
+      <br />
+      {t("hero.lead2Pre")}<strong>{t("hero.leadStrong")}</strong>{
         t("hero.leadPost")
       }
     </p>
@@ -58,7 +64,7 @@ const actions = [
         ))
       }
     </div>
-    <div class="flex flex-wrap gap-2.5 text-dim font-mono text-xs">
+    <div class="flex flex-wrap gap-2.5 text-blue font-mono text-xs md:text-sm">
       <span>Python</span><i class="font-normal text-faint">·</i><span
         >React</span
       ><i class="font-normal text-faint">·</i><span>Vue</span><i
@@ -67,7 +73,15 @@ const actions = [
         >Docker</span
       >
     </div>
-  </div>
+  </div>J'interviens à chaque étape d'un produit, de la conception au déploiement : de l'interface utilisée au quotidien au backend qui traite les données.
 
-  <CircuitBoard />
+  <!-- <CodeWindow /> -->
+
+  <a
+    href="#expertise"
+    aria-label={t("hero.scrollHint")}
+    class="hidden md:inline-flex absolute bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 items-center justify-center rounded-full border border-border text-muted transition duration-200 hover:text-text hover:border-border-strong animate-bounce"
+  >
+    <Icon svg={chevronsDownIcon} class="w-7 h-7" />
+  </a>
 </section>
