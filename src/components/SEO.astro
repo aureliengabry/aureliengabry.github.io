@@ -2,7 +2,7 @@
 // Reusable SEO head component: meta tags, Open Graph, Twitter Cards,
 // canonical URL, robots directives and JSON-LD structured data.
 // Rendered by the Layout so every page inherits a complete, indexable <head>.
-import { NAME, TWITTER_HANDLE, LINKS } from "../data/contact";
+import { NAME, NAME_ASCII, TWITTER_HANDLE, LINKS } from "../data/contact";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -27,6 +27,7 @@ const {
   description = t("seo.description"),
   keywords = [
     NAME,
+    NAME_ASCII,
     "full-stack developer",
     "full-stack software engineer",
     "Python developer",
@@ -63,18 +64,25 @@ const siteURL = Astro.site
   ? new URL(Astro.url.pathname, Astro.site)
   : Astro.url;
 const canonical = siteURL;
+const home = new URL("/", canonical);
 
-const titleWithSite = `${title} — ${NAME}`;
+// Name first: it's what people search for, and Google truncates long titles.
+const titleWithSite = `${NAME} — ${title}`;
 
 // Structured data (Schema.org) for rich results.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      // One stable @id shared by the FR and EN pages, so Google sees a
+      // single person rather than one per language.
       "@type": "Person",
-      "@id": `${canonical}#person`,
+      "@id": `${home}#person`,
       name: NAME,
-      url: canonical,
+      alternateName: [NAME_ASCII, "aureliengabry"],
+      givenName: "Aurélien",
+      familyName: "Gabry",
+      url: home,
       jobTitle: role,
       description:
         "Full-stack software engineer specializing in backend services (Python, Flask, SQLAlchemy, SQLite), frontend interfaces (React, Vue, Nuxt, Astro) and embedded Linux/ARM software, distributed systems and transport ticketing platforms.",
@@ -122,19 +130,21 @@ const jsonLd = {
       url: canonical,
       name: titleWithSite,
       description,
-      mainEntity: { "@id": `${canonical}#person` },
+      mainEntity: { "@id": `${home}#person` },
       inLanguage: lang,
-      about: { "@id": `${canonical}#person` },
+      about: { "@id": `${home}#person` },
     },
     {
       "@type": "WebSite",
-      "@id": `${new URL("/", canonical)}#website`,
-      url: new URL("/", canonical),
-      name: titleWithSite,
+      "@id": `${home}#website`,
+      url: home,
+      // Google uses WebSite.name as the site name shown in results.
+      name: NAME,
+      alternateName: [NAME_ASCII, "aureliengabry.github.io"],
       description,
       inLanguage: lang,
-      author: { "@id": `${canonical}#person` },
-      publisher: { "@id": `${canonical}#person` },
+      author: { "@id": `${home}#person` },
+      publisher: { "@id": `${home}#person` },
     },
     {
       "@type": "WebPage",
@@ -142,9 +152,9 @@ const jsonLd = {
       url: canonical,
       name: titleWithSite,
       description,
-      isPartOf: { "@id": `${new URL("/", canonical)}#website` },
-      mainEntity: { "@id": `${canonical}#person` },
-      isAbout: { "@id": `${canonical}#person` },
+      isPartOf: { "@id": `${home}#website` },
+      mainEntity: { "@id": `${home}#person` },
+      isAbout: { "@id": `${home}#person` },
       inLanguage: lang,
     },
   ],
@@ -173,7 +183,7 @@ const jsonLd = {
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
-<meta property="og:site_name" content={`${NAME} — ${role}`} />
+<meta property="og:site_name" content={NAME} />
 <meta property="og:title" content={titleWithSite} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />

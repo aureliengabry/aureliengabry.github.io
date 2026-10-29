@@ -141,12 +141,12 @@ export const ui = {
     "selectedWork.integration.protocols.4.name": "GNSS",
     "selectedWork.integration.protocols.5.name": "AVMS",
     "selectedWork.constraints.label": "EMBEDDED ENGINEERING",
-    "selectedWork.constraints.heading":
-      "Few resources, no room for error.",
+    "selectedWork.constraints.heading": "Few resources, no room for error.",
     "selectedWork.constraints.description":
       "A validator has neither the power of a server, nor the guarantee of a connection. Yet it has to respond in a fraction of a second, all day long. Every technical choice starts there: what gets loaded into memory, what gets stored, and how to keep working when the network drops.",
     "selectedWork.constraints.rows.0.label": "LIMITED MEMORY",
-    "selectedWork.constraints.rows.0.value": "Lightweight services, nothing superfluous",
+    "selectedWork.constraints.rows.0.value":
+      "Lightweight services, nothing superfluous",
     "selectedWork.constraints.rows.1.label": "MODEST PROCESSOR",
     "selectedWork.constraints.rows.1.value":
       "Processing optimised to respond fast",
@@ -154,10 +154,11 @@ export const ui = {
     "selectedWork.constraints.rows.2.value":
       "Every piece of data kept has a reason to be there",
     "selectedWork.constraints.rows.3.label": "UNSTABLE NETWORK",
-    "selectedWork.constraints.rows.3.value": "Everything works offline, sync follows",
+    "selectedWork.constraints.rows.3.value":
+      "Everything works offline, sync follows",
     "selectedWork.otherProjectsLabel": "ALSO AT ARRIVE",
     "selectedWork.otherProjects":
-      "Maintenance on STIB's network, and an AVL integration for Open Payment.",
+      "Maintenance on a legacy project, and AVL integration for other projects.",
     "education.label": "EDUCATION",
     "education.heading": "My background",
     "education.description":
@@ -194,17 +195,27 @@ export const ui = {
     "otherWork.heading": "Outside of work",
     "otherWork.description":
       "A few personal projects, started in my spare time and currently accessible online.",
-    "otherWork.card.kicker": "WEB PROJECT",
-    "otherWork.card.previewAlt": "Preview of the Azelia Photographie website",
-    "otherWork.card.title": "Azelia Photographie",
-    "otherWork.card.description":
-      "A photographer's portfolio site, designed to put her images center stage: true to her visual identity, fast, and adapted to every screen.",
-    "otherWork.card.tags.0": "Web Development",
-    "otherWork.card.tags.1": "Nuxt",
-    "otherWork.card.tags.2": "Nginx",
-    "otherWork.card.link": "Visit project",
-    "otherWork.note":
-      "Other projects are also being built alongside this one.",
+    "otherWork.cards.0.kicker": "WEB PROJECT",
+    "otherWork.cards.0.previewAlt":
+      "Preview of the Forme Coach website home page",
+    "otherWork.cards.0.title": "Forme Coach",
+    "otherWork.cards.0.description":
+      "Showcase website for a personal trainer to present their business. I set up a CMS so the coach can edit the content without my help.",
+    "otherWork.cards.0.tags.0": "Astro",
+    "otherWork.cards.0.tags.1": "Tailwind CSS",
+    "otherWork.cards.0.tags.2": "Keystatic",
+    "otherWork.cards.1.kicker": "WEB PROJECT",
+    "otherWork.cards.1.previewAlt":
+      "Preview of the Azelia Photographie website",
+    "otherWork.cards.1.title": "Azelia Photographie",
+    "otherWork.cards.1.description":
+      "Portfolio site for a photographer, built around her photos and her visual identity.",
+    "otherWork.cards.1.tags.0": "Nuxt",
+    "otherWork.cards.1.tags.1": "Tailwind CSS",
+    "otherWork.cards.1.tags.2": "Docker",
+    "otherWork.cards.1.tags.3": "Nginx",
+    "otherWork.link": "Visit project",
+    "otherWork.note": "Other projects are also being built alongside these.",
     "contact.label": "CONTACT",
     "contact.titleLine1": "Tell me about",
     "contact.titleLine2": "your project.",
@@ -297,7 +308,8 @@ export const ui = {
     "selectedWork.dashboard.metrics.1.label": "VALIDATEURS",
     "selectedWork.dashboard.metrics.1.caption": "tous opérateurs confondus",
     "selectedWork.dashboard.metrics.2.label": "VÉHICULES",
-    "selectedWork.dashboard.metrics.2.caption": "déployés tous opérateurs confondus",
+    "selectedWork.dashboard.metrics.2.caption":
+      "déployés tous opérateurs confondus",
     "selectedWork.dashboard.metrics.3.label": "OPÉRATEURS",
     "selectedWork.dashboard.metrics.3.caption": "opérateurs desservis",
     "selectedWork.dashboard.flow.0.label": "APPAREIL",
@@ -350,7 +362,8 @@ export const ui = {
     "selectedWork.constraints.description":
       "Un valideur n'a ni la puissance d'un serveur, ni la garantie d'être connecté. Il doit pourtant répondre en une fraction de seconde, toute la journée. Chaque choix technique part de là : ce qu'on charge en mémoire, ce qu'on stocke, et comment continuer à fonctionner quand le réseau tombe.",
     "selectedWork.constraints.rows.0.label": "MÉMOIRE LIMITÉE",
-    "selectedWork.constraints.rows.0.value": "Des services légers, sans superflu",
+    "selectedWork.constraints.rows.0.value":
+      "Des services légers, sans superflu",
     "selectedWork.constraints.rows.1.label": "PROCESSEUR MODESTE",
     "selectedWork.constraints.rows.1.value":
       "Des traitements optimisés pour répondre vite",
@@ -362,7 +375,7 @@ export const ui = {
       "Tout fonctionne hors ligne, la synchronisation suit",
     "selectedWork.otherProjectsLabel": "ÉGALEMENT CHEZ ARRIVE",
     "selectedWork.otherProjects":
-      "De la maintenance sur le réseau STIB, et une intégration SAE pour Open Payment.",
+      "Maintenance d'un projet historique, et intégration du SAE sur d'autres projets.",
     "education.label": "FORMATION",
     "education.heading": "Mon parcours",
     "education.description":
@@ -399,17 +412,27 @@ export const ui = {
     "otherWork.heading": "En dehors du travail",
     "otherWork.description":
       "Quelques projets personnels, lancés sur mon temps libre et actuellement accessibles en ligne.",
-    "otherWork.card.kicker": "PROJET WEB",
-    "otherWork.card.previewAlt": "Aperçu du site Azelia Photographie",
-    "otherWork.card.title": "Azelia Photographie",
-    "otherWork.card.description":
-      "Site portfolio d'une photographe, pensé pour mettre ses images en valeur : fidèle à son identité visuelle, rapide et adapté à tous les écrans.",
-    "otherWork.card.tags.0": "Développement Web",
-    "otherWork.card.tags.1": "Nuxt",
-    "otherWork.card.tags.2": "Nginx",
-    "otherWork.card.link": "Voir le projet",
+    "otherWork.cards.0.kicker": "PROJET WEB",
+    "otherWork.cards.0.previewAlt":
+      "Aperçu de la page d'accueil du site Forme Coach",
+    "otherWork.cards.0.title": "Forme Coach",
+    "otherWork.cards.0.description":
+      "Site vitrine d'un coach sportif pour présenter son activité. J'y ai intégré un CMS pour qu'il puisse modifier lui-même ses contenus.",
+    "otherWork.cards.0.tags.0": "Astro",
+    "otherWork.cards.0.tags.1": "Tailwind CSS",
+    "otherWork.cards.0.tags.2": "Keystatic",
+    "otherWork.cards.1.kicker": "PROJET WEB",
+    "otherWork.cards.1.previewAlt": "Aperçu du site Azélia Photographie",
+    "otherWork.cards.1.title": "Azélia Photographie",
+    "otherWork.cards.1.description":
+      "Site portfolio d'une photographe, construit autour de ses photos et de son identité visuelle.",
+    "otherWork.cards.1.tags.0": "Nuxt",
+    "otherWork.cards.1.tags.1": "Tailwind CSS",
+    "otherWork.cards.1.tags.2": "Docker",
+    "otherWork.cards.1.tags.3": "Nginx",
+    "otherWork.link": "Voir le projet",
     "otherWork.note":
-      "D'autres projets sont également en cours de création en parallèle de celui-ci.",
+      "D'autres projets sont également en cours de création en parallèle de ceux-ci.",
     "contact.label": "CONTACT",
     "contact.titleLine1": "Parlez-moi de",
     "contact.titleLine2": "votre projet.",

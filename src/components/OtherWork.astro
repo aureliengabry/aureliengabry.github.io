@@ -6,48 +6,74 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Copy lives under `otherWork.cards.<index>.*` in the i18n dictionary.
+const projects = [
+  {
+    href: LINKS.formeCoach,
+    image: "/images/projects/forme-coach.webp",
+    tagCount: 3,
+  },
+  {
+    href: LINKS.azeliaPhotographie,
+    image: "/images/projects/azelia-photographie.webp",
+    tagCount: 4,
+  },
+];
 ---
 
 <section class="max-w-content mx-auto px-6 py-24 md:py-36">
   <SectionIntro index="04" i18nKey="otherWork" />
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-    <article class="glass min-h-72 p-7 rounded-2xl">
-      <span class="font-mono text-xs tracking-widest text-blue"
-        >{t("otherWork.card.kicker")}</span
-      >
-      <a
-        class="group mt-8 block rounded-xl overflow-hidden border border-border aspect-[1200/649]"
-        href={LINKS.azeliaPhotographie}
-        target="_blank"
-        rel="noopener"
-        aria-label={t("otherWork.card.title")}
-      >
-        <img
-          src="/images/projects/azelia-photographie.webp"
-          alt={t("otherWork.card.previewAlt")}
-          width="1200"
-          height="649"
-          loading="lazy"
-          decoding="async"
-          class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
-        />
-      </a>
-      <h3 class="mt-6 mb-2.5 text-3xl tracking-title font-bold">
-        {t("otherWork.card.title")}
-      </h3>
-      <p class="text-muted text-base md:text-lg leading-body">
-        {t("otherWork.card.description")}
-      </p>
-      <TagList i18nKey="otherWork.card.tags" count={3} />
-      <a
-        class="inline-block mt-5 text-text text-xs md:text-sm font-bold hover:text-soft"
-        href={LINKS.azeliaPhotographie}
-        target="_blank"
-        rel="noopener">{t("otherWork.card.link")} ↗</a
-      >
-    </article>
+    {
+      projects.map(({ href, image, tagCount }, i) => {
+        const key = `otherWork.cards.${i}`;
+        return (
+          <article class="glass min-h-72 p-7 rounded-2xl">
+            <span class="font-mono text-xs tracking-widest text-blue">
+              {t(`${key}.kicker`)}
+            </span>
+            <a
+              class="group mt-8 block rounded-xl overflow-hidden border border-border aspect-[1200/649]"
+              href={href}
+              target="_blank"
+              rel="noopener"
+              aria-label={t(`${key}.title`)}
+            >
+              <img
+                src={image}
+                alt={t(`${key}.previewAlt`)}
+                width="1200"
+                height="649"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+              />
+            </a>
+            <h3 class="mt-6 mb-2.5 text-3xl tracking-title font-bold">
+              {t(`${key}.title`)}
+            </h3>
+            <p class="text-muted text-base md:text-lg leading-body">
+              {t(`${key}.description`)}
+            </p>
+            <TagList i18nKey={`${key}.tags`} count={tagCount} />
+            <a
+              class="inline-block mt-5 text-text text-xs md:text-sm font-bold hover:text-soft"
+              href={href}
+              target="_blank"
+              rel="noopener"
+            >
+              {t("otherWork.link")} ↗
+            </a>
+          </article>
+        );
+      })
+    }
 
-    <div class="glass flex items-center gap-6 p-8 rounded-2xl" data-reveal>
+    <div
+      class="glass flex items-center gap-6 p-8 rounded-2xl md:col-span-2"
+      data-reveal
+    >
       <span class="text-blue text-2xl">→</span>
       <p class="text-muted text-base md:text-lg">{t("otherWork.note")}</p>
     </div>
