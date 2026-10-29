@@ -158,7 +158,7 @@ export const ui = {
       "Everything works offline, sync follows",
     "selectedWork.otherProjectsLabel": "ALSO AT ARRIVE",
     "selectedWork.otherProjects":
-      "Maintenance on STIB's network, and an AVL integration for Open Payment.",
+      "Maintenance on a legacy project, and AVL integration for other projects.",
     "education.label": "EDUCATION",
     "education.heading": "My background",
     "education.description":
@@ -375,7 +375,7 @@ export const ui = {
       "Tout fonctionne hors ligne, la synchronisation suit",
     "selectedWork.otherProjectsLabel": "ÉGALEMENT CHEZ ARRIVE",
     "selectedWork.otherProjects":
-      "De la maintenance sur le réseau STIB, et une intégration SAE pour Open Payment.",
+      "Maintenance d'un projet historique, et intégration du SAE sur d'autres projets.",
     "education.label": "FORMATION",
     "education.heading": "Mon parcours",
     "education.description":
